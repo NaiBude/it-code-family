@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# it-code-family
-it码家：专为代码而生
-=======
 ## 项目说明
 
 ### 项目启动
@@ -47,4 +43,3 @@ it码家：专为代码而生
 1. Umi 文档：https://umijs.org/zh-CN
 2. Koa 文档：https://koa.bootcss.com/
 3. kenx 文档：http://knexjs.org/
->>>>>>> origin/main
