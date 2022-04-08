@@ -1,0 +1,55 @@
+{
+  "name": "it-code-family",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd client && npm run dev\" \"cd server && npm run serve\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rinstall": "sh ./scripts/install.sh",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "remove": "sh ./scripts/uninstall.sh",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged",
+    "lint:eslint": "eslint --fix --max-warnings 0 --ext .js,.jsx,.json ./",
+    "lint:less": "stylelint ./client/**/*.less --fix --custom-syntax postcss-less"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@typescript-eslint/parser": "^5.18.0",
+    "babel-eslint": "^10.1.0",
+    "concurrently": "^7.0.0",
+    "eslint": "^8.12.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-react": "^7.29.4",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "nodemon": "^2.0.15",
+    "postcss-less": "^6.0.0",
+    "prettier": "^2.6.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-declaration-block-no-ignored-properties": "^2.5.0",
+    "typescript": "^4.6.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,json}": [
+      "eslint --fix --max-warnings 0",
+      "prettier --write"
+    ],
+    "*.{json,html,less,css,}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "stylelint": "^14.6.1",
+    "stylelint-config-css-modules": "^4.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-order": "^5.0.0"
+  }
+}
