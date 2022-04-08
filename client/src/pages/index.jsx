@@ -16,6 +16,7 @@ export default function IndexPage() {
           <div key={item}>{item}</div>
         ))}
       </div>
+      <span>aiyo</span>
       <div
         isDispaly
         commit='hahahahha'
