@@ -4,6 +4,7 @@ import Logo from '../../assets/logo.png';
 import TextLogo from '../../assets/textLogo.png';
 
 export default function IndexPage() {
+  console.log('fdsafdsafdsafsadfsafdsafdsafdsafsa');
   const [name, setName] = useState([1, 2, 3, 4]);
   return (
     <div className={styles.home}>
