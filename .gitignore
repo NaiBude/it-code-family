@@ -3,3 +3,4 @@
 **/.umi
 **/.umi-production
 **/.DS_Store
+./.husky
