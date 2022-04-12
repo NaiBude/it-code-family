@@ -14,7 +14,6 @@
     "jsx": "react",
     "noEmitOnError": false,
     "noUnusedLocals": false,
-    "noUnusedParameters": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "strictPropertyInitialization": false,

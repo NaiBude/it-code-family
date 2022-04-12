@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['plugin:json/recommended'],
+  extends: ['plugin:json/recommended-with-comments'],
   plugins: ['import', 'react', 'json'],
   rules: {
     'import/no-unresolved': 'warn', // 确保导入模块存在
@@ -232,6 +232,7 @@ module.exports = {
   env: {
     node: true,
     browser: true,
+    commonjs: true,
   },
   overrides: [
     {

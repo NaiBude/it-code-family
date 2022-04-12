@@ -9,9 +9,9 @@
     "rinstall": "sh ./scripts/install.sh",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "remove": "sh ./scripts/uninstall.sh",
-    "prepare": "husky install",
+    "prepare": "husky install && sh ./scripts/git_hooks.sh",
     "lint-staged": "lint-staged",
-    "lint:eslint": "eslint --fix --max-warnings 0 --ext .js,.jsx,.json ./",
+    "lint:eslint": "eslint --fix --max-warnings 0 --ext .js,.jsx,.json,.ts,tsx ./",
     "lint:less": "stylelint ./client/**/*.less --fix --custom-syntax postcss-less"
   },
   "author": "",
@@ -39,11 +39,11 @@
     "typescript": "^4.6.3"
   },
   "lint-staged": {
-    "*.{js,jsx,json}": [
+    "*.{js,jsx,ts,tsx,json}": [
       "eslint --fix --max-warnings 0",
       "prettier --write"
     ],
-    "*.{json,html,less,css,}": [
+    "*.{html,less,css,}": [
       "prettier --write"
     ]
   },
