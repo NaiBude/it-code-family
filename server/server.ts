@@ -1,8 +1,9 @@
-const Server = require('./koaServer/coreServer');
-const PORT = require('./config/config');
+import Server = require('./koaServer/coreServer');
+
+import { PORT } from './config/config';
 
 const app = new Server();
-console.log('a');
+
 app.init();
 
 app.use(async (ctx, next) => {

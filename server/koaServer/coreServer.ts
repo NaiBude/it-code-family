@@ -1,4 +1,4 @@
-const Koa = require('koa');
+import Koa = require('koa');
 const { initCloudApi } = require('./initCloudApi');
 const { initMiddleWare } = require('./initMiddleWare');
 
@@ -9,4 +9,4 @@ class server extends Koa {
   }
 }
 
-module.exports = server;
+export = server;

@@ -1,6 +1,6 @@
 const { baseModel } = require('../baseModel');
 
-class User extends baseModel {
+export class User extends baseModel {
   async selectData() {
     await this.sql('user').insert({ username: 'aaaa', password: 'cccc' });
     const result = await this.sql.select().from('user');
@@ -9,4 +9,3 @@ class User extends baseModel {
     };
   }
 }
-module.exports = new User();

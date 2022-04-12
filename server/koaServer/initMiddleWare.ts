@@ -1,4 +1,5 @@
-const { readdir } = require('fs/promises');
+import { readdir } from 'fs/promises';
+import koa = require('koa');
 /**
  *
  * @param {Object} context

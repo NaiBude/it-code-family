@@ -1,5 +1,5 @@
 const knex = require('knex');
-const { dataLog } = require('./databaseLog');
+import { dataLog } from './databaseLog';
 const { baseModul } = require('../config/config');
 const { config } = require('../utils/chooseConfig');
 /**
@@ -7,6 +7,7 @@ const { config } = require('../utils/chooseConfig');
  * @param {Object} context
  *  初始化数据模型
  */
+
 const initModels = function () {
   const sql = knex({
     client: baseModul,
@@ -17,4 +18,4 @@ const initModels = function () {
 
   return sql;
 };
-module.exports = { initModels };
+export { initModels };
