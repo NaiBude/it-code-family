@@ -20,4 +20,4 @@ const initMiddleWare = context => {
   });
 };
 
-module.exports = { initMiddleWare };
+export { initMiddleWare };

@@ -1,8 +1,10 @@
 import { initModels } from '../koaServer/initModels';
 
-export class baseModel {
+class baseModel {
   protected sql;
+
   constructor() {
     this.sql = initModels();
   }
 }
+export = baseModel;

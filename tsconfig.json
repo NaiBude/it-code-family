@@ -25,7 +25,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "typeRoots": ["./server/typings", "./client/src/typings"]
   },
   "exclude": ["app/public", "app/views", "node_modules*"]
 }

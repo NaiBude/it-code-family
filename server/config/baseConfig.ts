@@ -1,4 +1,6 @@
-export const baseConfig = {
+import { sqlConfigInter } from '../interface/config';
+
+export const baseConfig: sqlConfigInter = {
   host: 'localhost',
   port: 3306,
   user: 'root',

@@ -1,5 +1,5 @@
-const { readdir } = require('fs/promises');
-const Router = require('koa-router');
+import { readdir } from 'fs/promises';
+import * as Router from 'koa-router';
 
 const initCloudApi = new Router();
 
@@ -21,4 +21,4 @@ readdir('./cloudapi').then(cloudapiDirs => {
   });
 });
 
-module.exports = { initCloudApi };
+export { initCloudApi };

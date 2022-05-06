@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   extends: ['plugin:json/recommended-with-comments'],
   plugins: ['import', 'react', 'json'],
+  parser: '@typescript-eslint/parser',
   rules: {
     'import/no-unresolved': 'warn', // 确保导入模块存在
     'import/no-amd': 'error', // 不能使用AMD规范
@@ -18,7 +19,7 @@ module.exports = {
       },
     ], // 导入顺序
     'import/newline-after-import': 'warn', // Import语句强制换行
-    'import/prefer-default-export': 'warn', // 如果模块是单个名称，首选默认导入
+    // 'import/prefer-default-export': 'warn', // 如果模块是单个名称，首选默认导入
     'import/no-unassigned-import': 'warn', // 禁止未分配的模块导入，如直接导入css
     'import/dynamic-import-chunkname': [
       'warn',
@@ -226,6 +227,7 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+      tsx: true,
       modules: true,
     },
   },
@@ -236,19 +238,18 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['./client/*.js', './client/*.jsx'],
+      files: ['./client/**/*.(js|jsx)'],
       rules: {
         'import/no-commonjs': 'warn', // 禁止使用common.js规范
         'import/no-nodejs-modules': 'warn',
       },
     },
     {
-      files: ['./server/*.js'],
+      files: ['./server/**/*.js'],
       rules: {},
     },
     {
-      parser: '@typescript-eslint/parser',
-      files: ['./client/*.ts', './server/*.ts'],
+      files: ['./client/**/*.ts', './server/**/*.ts', './client/**/*.tsx'],
       plugins: ['@typescript-eslint'],
       rules: {
         'import/no-unresolved': 0,

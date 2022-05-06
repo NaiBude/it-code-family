@@ -1,4 +1,4 @@
-const { baseModel } = require('../baseModel');
+import baseModel from '../baseModel';
 
 export class User extends baseModel {
   async selectData() {

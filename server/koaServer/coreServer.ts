@@ -1,6 +1,6 @@
 import Koa = require('koa');
-const { initCloudApi } = require('./initCloudApi');
-const { initMiddleWare } = require('./initMiddleWare');
+import { initCloudApi } from './initCloudApi';
+import { initMiddleWare } from './initMiddleWare';
 
 class server extends Koa {
   init() {

@@ -1,5 +1,6 @@
-const knex = require('knex');
+import { knex } from 'knex';
 import { dataLog } from './databaseLog';
+
 const { baseModul } = require('../config/config');
 const { config } = require('../utils/chooseConfig');
 /**

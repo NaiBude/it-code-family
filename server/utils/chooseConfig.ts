@@ -1,7 +1,8 @@
-const { HAVE_SELFCONFIG_TIP, NO_SELFCONFIG_TIP } = require('../utils/vocabulary');
-const { sqlConfig } = require('../config/config');
+import { HAVE_SELFCONFIG_TIP, NO_SELFCONFIG_TIP } from './vocabulary';
+import { sqlConfigInter } from '../interface/config';
+import { sqlConfig } from '../config/config';
 
-let selfConfig = null;
+let selfConfig: sqlConfigInter = null;
 
 try {
   selfConfig = require('./baseConfig');
