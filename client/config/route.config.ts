@@ -8,4 +8,4 @@ const routes: routerConfig[] = [
   { path: '/home', component: '@/pages/App/home' },
   { component: '@/pages/App/home' },
 ];
-export = routes;
+export { routes };

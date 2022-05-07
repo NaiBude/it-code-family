@@ -1,0 +1,32 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "es6",
+    "strict": false,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "charset": "utf8",
+    "allowJs": false,
+    "pretty": true,
+    "jsx": "react",
+    "noEmitOnError": false,
+    "noUnusedLocals": false,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "strictPropertyInitialization": false,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "sourceMap": true,
+    "importHelpers": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "typeRoots": ["./server/typings", "./client/src/typings"]
+  },
+  "exclude": ["app/public", "app/views", "node_modules*"]
+}

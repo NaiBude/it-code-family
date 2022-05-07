@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './index.less';
 import Logo from '../../assets/logo.png';
 import TextLogo from '../../assets/textLogo.png';
+import { request } from '../service/request';
 
 export default function IndexPage() {
   const [name, setName] = useState([1, 2, 3, 4]);
