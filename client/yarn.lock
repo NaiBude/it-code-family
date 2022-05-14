@@ -2591,19 +2591,6 @@
   dependencies:
     "webidl-conversions" "^5.0.0"
 
-"dva-core@^1.1.0 | ^1.5.0-0 | ^1.6.0-0":
-  "integrity" "sha512-e+0yOEWUK+XbnqflX+KXoLZDGxn+kLKgcT6XYT8GyRe0xcbmLEbwDZO0DXUkdsbxfqSOlLkIprMUoYJ3D5B4Gg=="
-  "resolved" "https://mirrors.tencent.com/npm/dva-core/-/dva-core-1.6.0-beta.7.tgz"
-  "version" "1.6.0-beta.7"
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    "flatten" "^1.0.2"
-    "global" "^4.3.2"
-    "invariant" "^2.2.1"
-    "is-plain-object" "^2.0.3"
-    "redux-saga" "^0.16.0"
-    "warning" "^3.0.0"
-
 "dva-core@2.0.4":
   "integrity" "sha512-Zh39llFyItu9HKXKfCZVf9UFtDTcypdAjGBew1S+wK8BGVzFpm1GPTdd6uIMeg7O6STtCvt2Qv+RwUut1GFynA=="
   "resolved" "https://registry.npmmirror.com/dva-core/-/dva-core-2.0.4.tgz"
@@ -7219,18 +7206,6 @@
   "integrity" "sha512-CkCj6giN3S+n9qrYiBTX5gystlENnRW5jZeNLHpe6aue+SrHcG5VYwujhW9s4dY31mEGsxBDrHR6oI69fTXsaQ=="
   "resolved" "https://registry.npmmirror.com/source-map/-/source-map-0.7.3.tgz"
   "version" "0.7.3"
-
-"source-map@0.5.6":
-  "integrity" "sha1-dc449SvwczxafwwRjYEzSiu19BI="
-  "resolved" "https://mirrors.tencent.com/npm/source-map/-/source-map-0.5.6.tgz"
-  "version" "0.5.6"
-
-"sourcemapped-stacktrace@^1.1.6":
-  "integrity" "sha512-O0pcWjJqzQFVsisPlPXuNawJHHg9N9UgpJ/aDmvi9+vnS3x1C0NhwkVFzzZ1VN0Xo+bekyweoqYvBw5ZBKiNnQ=="
-  "resolved" "https://mirrors.tencent.com/npm/sourcemapped-stacktrace/-/sourcemapped-stacktrace-1.1.11.tgz"
-  "version" "1.1.11"
-  dependencies:
-    "source-map" "0.5.6"
 
 "spdx-correct@^3.0.0":
   "integrity" "sha512-cOYcUWwhCuHCXi49RhFRCyJEK3iPj1Ziz9DpViV3tbZOwXD49QzIN3MpOLJNxh2qwq2lJJZaKMVw9qNi4jTC0w=="
