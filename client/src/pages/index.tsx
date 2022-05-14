@@ -5,7 +5,7 @@ import TextLogo from '../../assets/textLogo.png';
 import { request } from '../service/request';
 
 export default function IndexPage() {
-  const [name, setName] = useState([1, 2, 3, 4]);
+  const [name, setName] = useState([1, 2, 32, 4]);
   return (
     <div className={styles.home}>
       <div className={styles.title}>
