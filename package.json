@@ -12,7 +12,8 @@
     "prepare": "husky install && sh ./scripts/git_hooks.sh",
     "lint-staged": "lint-staged",
     "lint:eslint": "eslint --fix --max-warnings 0 --ext .js,.jsx,.json,.ts,tsx ./",
-    "lint:less": "stylelint ./client/**/*.less --fix --custom-syntax postcss-less"
+    "lint:less": "stylelint ./client/**/*.less --fix --custom-syntax postcss-less",
+    "rm:lock": "sh ./scripts/remove_lock.sh"
   },
   "author": "",
   "license": "ISC",
@@ -31,7 +32,7 @@
     "eslint-plugin-react": "^7.29.4",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.16",
     "postcss-less": "^6.0.0",
     "prettier": "^2.6.2",
     "stylelint-config-rational-order": "^0.1.2",
