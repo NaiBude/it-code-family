@@ -94,7 +94,7 @@ module.exports = {
     'no-new-wrappers': 'warn', // 禁止对 String，Number 和 Boolean 使用 new 操作符
     'no-octal': 'warn', // 禁用八进制字面量
     'no-octal-escape': 'warn', // 禁止在字符串中使用八进制转义序
-    'no-param-reassign': 'warn', // 禁止对 function 的参数进行重新赋值
+    // 'no-param-reassign': 'warn', // 禁止对 function 的参数进行重新赋值
     'no-proto': 'warn', // 禁用 __proto__ 属性,使用 Object.getPrototypeOf 和 Object.setPrototypeOf 代替
     'no-redeclare': 'warn', // 禁止多次声明同一变量
     'no-restricted-properties': [

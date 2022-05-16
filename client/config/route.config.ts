@@ -1,11 +1,18 @@
 interface routerConfig {
-  [propName: string]: string;
-  component: string;
+  component?: string;
   path?: string;
+  exact?: boolean;
+  redirect?: string;
+  wrappers?: string[];
+  title?: string;
+  routes?: routerConfig[];
 }
 const routes: routerConfig[] = [
-  { path: '/', component: '@/pages/index' },
-  { path: '/home', component: '@/pages/App/home' },
-  { component: '@/pages/App/home' },
+  { path: '/', exact: true, redirect: '/home' },
+  {
+    path: '/home',
+    component: '@/pages/apps/AppPageHeader',
+    routes: [{ path: '/home', exact: true, component: '@/pages/apps/AppHomePage' }],
+  },
 ];
 export { routes };
