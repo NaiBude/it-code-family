@@ -1,32 +1,40 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
-    "target": "es2017",
-    "module": "es6",
-    "strict": false,
-    "noImplicitAny": false,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "allowSyntheticDefaultImports": true,
-    "charset": "utf8",
-    "allowJs": false,
-    "pretty": true,
-    "jsx": "react",
-    "noEmitOnError": false,
-    "noUnusedLocals": false,
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false,
-    "strictPropertyInitialization": false,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
+    "outDir": "../server/dist",
+    "module": "esnext",
+    "target": "esnext",
+    "lib": ["esnext", "dom"],
     "sourceMap": true,
-    "importHelpers": true,
     "baseUrl": ".",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "strict": false,
     "paths": {
-      "@/*": ["./*"]
-    },
-    "typeRoots": ["./server/typings", "./client/src/typings"]
+      "@/*": ["./src/*"],
+      "@@/*": ["src/.umi/*"]
+    }
   },
-  "exclude": ["app/public", "app/views", "node_modules*"]
+  "typeRoots": ["./typings"],
+  "include": ["./src"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts",
+    "tslint:latest",
+    "tslint-config-prettier"
+  ]
 }

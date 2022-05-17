@@ -4,7 +4,7 @@ import Logo from '../../assets/logo.png';
 import TextLogo from '../../assets/textLogo.png';
 import { request } from '../service/request';
 
-export default function IndexPage() {
+export default function IndexPage(props) {
   const [name, setName] = useState([1, 2, 32, 4]);
   return (
     <div className={styles.home}>
@@ -18,6 +18,7 @@ export default function IndexPage() {
       </div>
       <div>huhuhu</div>
       <div className={styles.box}></div>
+      <div>{props.children}</div>
     </div>
   );
 }
