@@ -9,6 +9,8 @@ import Footer from '@/pages/apps/AppFooterPage';
 const { HeadMenu, SubMenu } = Menu;
 
 export default function Header(props: any) {
+  console.log('a');
+
   const [active, setActive] = useState('1');
   return (
     <div>
