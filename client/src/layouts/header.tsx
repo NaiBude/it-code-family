@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
-import './header.less';
 import { Menu, Input, Button } from 'tdesign-react';
 import { IconFont } from 'tdesign-icons-react';
 import { Link } from 'umi';
+import style from './header.less';
 import SideBar from '@/pages/apps/AppSideBarPage';
 import Footer from '@/pages/apps/AppFooterPage';
 
@@ -15,7 +15,7 @@ export default function Header(props: any) {
       <Fragment>
         <HeadMenu
           value={active}
-          onChange={v => setActive(v)}
+          onChange={v => setActive(`${v}`)}
           logo={
             <img
               src='https://www.tencent.com/img/index/menu_logo_hover.png'
