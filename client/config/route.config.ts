@@ -10,9 +10,13 @@ interface routerConfig {
 const routes: routerConfig[] = [
   { path: '/', exact: true, redirect: '/home' },
   {
-    path: '/home',
-    component: '@/pages/apps/AppPageHeader',
-    routes: [{ path: '/home', exact: true, component: '@/pages/apps/AppHomePage' }],
+    path: '/',
+    component: '@/pages/index',
+    routes: [
+      { path: '/', exact: true, component: '@/pages/apps/AppHomePage' },
+      { path: '/forum', component: '@/pages/apps/AppForumPage' },
+      { path: '/ask', component: '@/pages/apps/AppForumPage' },
+    ],
   },
 ];
 export { routes };

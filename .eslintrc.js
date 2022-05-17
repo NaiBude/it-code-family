@@ -64,7 +64,7 @@ module.exports = {
     'consistent-return': 'warn', // 要求 return 语句要么总是指定返回的值，要么不指定
     curly: 'warn', // 强制所有控制语句使用一致的括号风格
     'default-case': 'warn', // 要求 switch 语句中有 default 分支
-    'dot-location': 'warn', // 强制在点号之前和之后一致的换行
+    // 'dot-location': 'warn', // 强制在点号之前和之后一致的换行
     'dot-notation': 'warn', // 强制尽可能地使用点号
     eqeqeq: 'warn', // 要求使用 === 和 !==
     'guard-for-in': 'warn', // 要求 for-in 循环中有一个 if 语句
