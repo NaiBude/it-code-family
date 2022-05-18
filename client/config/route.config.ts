@@ -14,10 +14,10 @@ const routes: routerConfig[] = [
     path: '/',
     component: '@/pages/index',
     routes: [
-      { path: '/', component: '@/pages/apps/AppIndexPage/index' },
+      // { path: '/', component: '@/pages/apps/AppIndexPage/index' },
       {
         path: '/home',
-        component: '@/pages/apps/AppIndexPage/Tabs/Recommend',
+        component: '@/pages/apps/AppIndexPage/index',
         routes: [
           { path: '/home', exact: true, component: '@/pages/apps/AppIndexPage/Tabs/Recommend' },
           { path: '/home/nowplaying', component: '@/pages/apps/AppIndexPage/Tabs/Nowplaying' },

@@ -6,7 +6,14 @@ import AvtarHead from '@/components/AvtarHead';
 import SearchInput from '@/components/SearchInput';
 // import Footer from '@/pages/apps/AppFooterPage';
 
-const tabbarList = ['首页', '问答', '学习', '资讯', '社区', 'App', '插件'];
+const tabbarList = [
+  { id: 0, tab: '首页', path: '/home' },
+  { id: 1, tab: '问答', path: '/study' },
+  { id: 2, tab: '学习', path: '/news' },
+  { id: 3, tab: '资讯', path: '/bbs' },
+  { id: 4, tab: 'App', path: '/app' },
+  { id: 5, tab: '插件', path: '/plugin' },
+];
 
 export default function Header(props) {
   const [tabbarSearchStatus, setTabbarSearchStatus] = useState(false);
@@ -24,16 +31,16 @@ export default function Header(props) {
           alt=''
         />
         <ul className={styles.tabber_header}>
-          {tabbarList.map((item, index) => (
+          {tabbarList.map(item => (
             <li
-              key={item}
-              className={tabbarStatus === index ? styles.tabber_header_select : ''}
+              key={item.id}
+              className={tabbarStatus === item.id ? styles.tabber_header_select : ''}
               onClick={() => {
-                tabbarClickHandle(index);
+                tabbarClickHandle(item.id);
               }}
             >
-              <Link to='/index'>
-                <span>{item}</span>
+              <Link to={item.path}>
+                <span>{item.tab}</span>
               </Link>
             </li>
           ))}

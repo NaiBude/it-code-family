@@ -1,4 +1,4 @@
-import Koa = require('koa');
+import Koa from 'koa';
 import { initCloudApi } from './initCloudApi';
 import { initMiddleWare } from './initMiddleWare';
 

@@ -1,5 +1,4 @@
 import { readdir } from 'fs/promises';
-import koa = require('koa');
 /**
  *
  * @param {Object} context
