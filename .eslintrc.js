@@ -20,7 +20,7 @@ module.exports = {
     ], // 导入顺序
     'import/newline-after-import': 'warn', // Import语句强制换行
     // 'import/prefer-default-export': 'warn', // 如果模块是单个名称，首选默认导入
-    'import/no-unassigned-import': 'warn', // 禁止未分配的模块导入，如直接导入css
+    // 'import/no-unassigned-import': 'warn', // 禁止未分配的模块导入，如直接导入css
     'import/dynamic-import-chunkname': [
       'warn',
       {
