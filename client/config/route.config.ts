@@ -8,29 +8,57 @@ interface routerConfig {
   routes?: routerConfig[];
 }
 const routes: routerConfig[] = [
+  { path: '/creater' },
+  { path: '/', exact: true, redirect: '/home' },
   {
-    component: '@/layouts/header',
+    path: '/',
+    component: '@/pages/index',
     routes: [
-      { path: '/', exact: true, redirect: '/index/recommend' },
-      { path: '/', component: '@/pages/index' },
+      // { path: '/', component: '@/pages/apps/AppIndexPage/index' },
       {
-        path: '/index',
-        exact: false,
+        path: '/home',
         component: '@/pages/apps/AppIndexPage/index',
         routes: [
-          { path: '/index/recommend', component: '@/pages/apps/AppIndexPage/Tabs/Recommend' },
-          { path: '/index/nowplaying', component: '@/pages/apps/AppIndexPage/Tabs/Nowplaying' },
-          { path: '/index/topsearch', component: '@/pages/apps/AppIndexPage/Tabs/TopSearch' },
+          {
+            path: '/home/recommend',
+            exact: true,
+            component: '@/pages/apps/AppIndexPage/Tabs/Recommend',
+          },
+          { path: '/home/nowplaying', component: '@/pages/apps/AppIndexPage/Tabs/Nowplaying' },
+          { path: '/home/topsearch', component: '@/pages/apps/AppIndexPage/Tabs/TopSearch' },
         ],
       },
-      { path: '/ask', component: '@/pages/apps/AppAskPage' },
       { path: '/study', component: '@/pages/apps/AppStudyPage' },
       { path: '/news', component: '@/pages/apps/AppNewsPage' },
       { path: '/bbs', component: '@/pages/apps/AppBbsPage' },
       { path: '/app', component: '@/pages/apps/AppPage' },
       { path: '/plug', component: '@/pages/apps/AppPlugPage' },
-      { component: '@/pages/NotFound', exact: true },
+      { component: '@/pages/NotFound', redirect: '/home' },
     ],
   },
+  // { component: '@/pages/NotFound' },
+  // {
+  //   component: '@/layouts/header',
+  //   routes: [
+  //     { path: '/', exact: true, redirect: '/index/recommend' },
+  //     { path: '/', component: '@/pages/index' },
+  //     {
+  //       path: '/index',
+  //       exact: false,
+  //       component: '@/pages/apps/AppIndexPage/index',
+  //       routes: [
+  //         { path: '/index/recommend', component: '@/pages/apps/AppIndexPage/Tabs/Recommend' },
+  //         { path: '/index/nowplaying', component: '@/pages/apps/AppIndexPage/Tabs/Nowplaying' },
+  //         { path: '/index/topsearch', component: '@/pages/apps/AppIndexPage/Tabs/TopSearch' },
+  //       ],
+  //     },
+  //     { path: '/study', component: '@/pages/apps/AppStudyPage' },
+  //     { path: '/news', component: '@/pages/apps/AppNewsPage' },
+  //     { path: '/bbs', component: '@/pages/apps/AppBbsPage' },
+  //     { path: '/app', component: '@/pages/apps/AppPage' },
+  //     { path: '/plug', component: '@/pages/apps/AppPlugPage' },
+  //     { component: '@/pages/NotFound', exact: true },
+  //   ],
+  // },
 ];
 export { routes };

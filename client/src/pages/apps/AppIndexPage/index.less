@@ -1,27 +1,52 @@
-.tabr,
+.tab {
+  display: flex;
+  justify-content: flex-start;
+  width: 60%;
+  height: 50px;
+  margin: 0 auto;
+  background-color: #fff;
+
+  .tarb_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 140px;
+    margin: 0;
+    padding: 0;
+    padding: 0 20px;
+
+    li {
+      display: inline-block;
+      height: 20px;
+      list-style: none;
+
+      a {
+        display: inline-block;
+        color: #333;
+        font-size: 14px;
+
+        &:hover {
+          color: #00911d;
+        }
+      }
+    }
+
+    .tabber_elect {
+      a {
+        display: inline-block;
+        color: #00911d;
+        border-bottom: 2px solid #00911d;
+
+        &:hover {
+          color: #00911d;
+        }
+      }
+    }
+  }
+}
+
 .context {
-  position: relative;
-  z-index: 500;
   width: 60%;
   margin: 0 auto;
-  overflow: hidden;
-  color: #383838;
-  background: #fff;
-}
-
-.tabr .tabr-li ul a {
-  display: inline-block;
-  float: left;
-  margin-right: 20px;
-  font-size: 16px;
-  line-height: 47px;
-}
-
-.context {
-  margin-top: 2px;
-}
-
-.active {
-  color: #00a870;
-  border-bottom: 1px solid #00a870;
+  margin-top: 5px;
 }

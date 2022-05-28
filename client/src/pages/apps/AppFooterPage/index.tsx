@@ -1,10 +1,10 @@
 import React from 'react';
-import './index.less';
+import styles from './index.less';
 
 export default function Footer() {
   return (
     <div>
-      <div className='footer'>itmj版权所有</div>
+      <div className={styles.footer}>itmj版权所有</div>
     </div>
   );
 }

@@ -20,7 +20,7 @@ module.exports = {
     ], // 导入顺序
     'import/newline-after-import': 'warn', // Import语句强制换行
     // 'import/prefer-default-export': 'warn', // 如果模块是单个名称，首选默认导入
-    'import/no-unassigned-import': 'warn', // 禁止未分配的模块导入，如直接导入css
+    // 'import/no-unassigned-import': 'warn', // 禁止未分配的模块导入，如直接导入css
     'import/dynamic-import-chunkname': [
       'warn',
       {
@@ -64,7 +64,7 @@ module.exports = {
     'consistent-return': 'warn', // 要求 return 语句要么总是指定返回的值，要么不指定
     curly: 'warn', // 强制所有控制语句使用一致的括号风格
     'default-case': 'warn', // 要求 switch 语句中有 default 分支
-    'dot-location': 'warn', // 强制在点号之前和之后一致的换行
+    // 'dot-location': 'warn', // 强制在点号之前和之后一致的换行
     'dot-notation': 'warn', // 强制尽可能地使用点号
     eqeqeq: 'warn', // 要求使用 === 和 !==
     'guard-for-in': 'warn', // 要求 for-in 循环中有一个 if 语句
@@ -94,7 +94,7 @@ module.exports = {
     'no-new-wrappers': 'warn', // 禁止对 String，Number 和 Boolean 使用 new 操作符
     'no-octal': 'warn', // 禁用八进制字面量
     'no-octal-escape': 'warn', // 禁止在字符串中使用八进制转义序
-    'no-param-reassign': 'warn', // 禁止对 function 的参数进行重新赋值
+    // 'no-param-reassign': 'warn', // 禁止对 function 的参数进行重新赋值
     'no-proto': 'warn', // 禁用 __proto__ 属性,使用 Object.getPrototypeOf 和 Object.setPrototypeOf 代替
     'no-redeclare': 'warn', // 禁止多次声明同一变量
     'no-restricted-properties': [

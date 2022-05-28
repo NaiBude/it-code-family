@@ -1,23 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './index.less';
-import Logo from '../../assets/logo.png';
-import TextLogo from '../../assets/textLogo.png';
-import { request } from '../service/request';
+// import { request } from '../service/request';
+import Header from '@/layouts/header';
+import Sidebar from '@/components/SideBar/Sidebar';
+import 'tdesign-react/es/style/index.css';
+import Button from '@/components/SideBar/Button';
 
+const context = [
+  {
+    id: 1,
+    text: 'HTML',
+    path: 'index/1',
+  },
+  {
+    id: 2,
+    text: '前端',
+    path: 'index/2',
+  },
+  {
+    id: 3,
+    text: '后端',
+    path: 'index/3',
+  },
+  {
+    id: 4,
+    text: '前端',
+    path: 'index/4',
+  },
+  {
+    id: 5,
+    text: '后端',
+    path: 'index/5',
+  },
+  {
+    id: 6,
+    text: '前端',
+    path: 'index/6',
+  },
+  {
+    id: 7,
+    text: '后端',
+    path: 'index/7',
+  },
+];
 export default function IndexPage(props) {
-  const [name, setName] = useState([1, 2, 32, 4]);
   return (
-    <div className={styles.home}>
-      <div className={styles.title}>
-        <img className={styles.logo} src={Logo} />
-        <img className={styles} src={TextLogo} />
-        <iframe sandbox='' src='' frameBorder={0}></iframe>
-        {name.map(item => (
-          <div key={item}>{item}</div>
-        ))}
-      </div>
-      <div>huhuhu</div>
-      <div className={styles.box}></div>
+    <div className={styles.center_content}>
+      <Header></Header>
+      <Button listdata={context} onClick />
       <div>{props.children}</div>
     </div>
   );

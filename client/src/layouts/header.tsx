@@ -1,75 +1,73 @@
-import React, { Fragment, useState } from 'react';
-import { Menu, Input, Button } from 'tdesign-react';
-import { IconFont } from 'tdesign-icons-react';
-import { Link } from 'umi';
-import style from './header.less';
-import SideBar from '@/pages/apps/AppSideBarPage';
-import Footer from '@/pages/apps/AppFooterPage';
+import React, { useState, useEffect } from 'react';
+import { withRouter, Link } from 'umi';
+import styles from './header.less';
+import AvtarHead from '@/components/AvtarHead';
+// import SideBar from '@/pages/apps/AppSideBarPage';
+import SearchInput from '@/components/SearchInput';
+// import Footer from '@/pages/apps/AppFooterPage';
 
-const { HeadMenu, SubMenu } = Menu;
+const tabbarList = [
+  { id: 0, tab: '首页', path: '/home' },
+  { id: 1, tab: '问答', path: '/study' },
+  { id: 2, tab: '学习', path: '/news' },
+  { id: 3, tab: '资讯', path: '/bbs' },
+  { id: 4, tab: 'App', path: '/app' },
+  { id: 5, tab: '插件', path: '/plug' },
+];
+function Header(props) {
+  const [tabbarSearchStatus, setTabbarSearchStatus] = useState(false);
+  const [tabbarStatus, setTabbarStatus] = useState(0);
 
-export default function Header(props: any) {
-  console.log('a');
+  const tabStatusList = [];
 
-  const [active, setActive] = useState('1');
+  const tabbarClickHandle = index => {
+    setTabbarStatus(index);
+  };
+  // console.log('props', props);
+  useEffect(() => {
+    if (props.location.pathname.split('/').splice(-1)) {
+      console.log(props.location.pathname);
+    }
+  }, []);
+
   return (
-    <div>
-      <Fragment>
-        <HeadMenu
-          value={active}
-          onChange={v => setActive(`${v}`)}
-          logo={
-            <img
-              src='https://www.tencent.com/img/index/menu_logo_hover.png'
-              width='136'
-              alt='logo'
-            />
-          }
-          style={{ marginBottom: 20 }}
-        >
-          <Link to='/index'>
-            <SubMenu value='sub-0' title='首页'></SubMenu>
-          </Link>
-          <Link to='/ask'>
-            <SubMenu value='sub-1' title='问答'></SubMenu>
-          </Link>
-          <Link to='/study'>
-            <SubMenu value='sub-2' title='学习'></SubMenu>
-          </Link>
-          <Link to='/news'>
-            <SubMenu value='sub-3' title='资讯'></SubMenu>
-          </Link>
-          <Link to='/bbs'>
-            <SubMenu value='sub-4' title='社区'></SubMenu>
-          </Link>
-          <Link to='/app'>
-            <SubMenu value='sub-5' title='App'></SubMenu>
-          </Link>
-          <Link to='/plug'>
-            <SubMenu value='sub-6' title='插件'></SubMenu>
-          </Link>
-          <Input
-            align='left'
-            clearable
-            size='large'
-            status='success'
-            type='search'
-            style={{ maxWidth: '799px' }}
-          />
-          <Button
-            shape='rectangle'
-            size='large'
-            type='button'
-            variant='base'
-            theme='success'
-            icon={<IconFont name='search' />}
-          />
-          <SubMenu value='sub-7' title='登陆'></SubMenu>
-        </HeadMenu>
-      </Fragment>
-      <SideBar />
-      <div>{props.children}</div>
-      <Footer />
+    <div className={styles.header_box}>
+      <div className={styles.tabbar_header}>
+        <img
+          className={styles.header_image}
+          src='https://www.tencent.com/img/index/menu_logo_hover.png'
+          alt=''
+        />
+        <ul className={styles.tabber_header}>
+          {tabbarList.map(item => (
+            <li
+              key={item.id}
+              className={tabbarStatus === item.id ? styles.tabber_header_select : ''}
+              onClick={() => {
+                tabbarClickHandle(item.id);
+              }}
+            >
+              <Link to={item.path}>
+                <span>{item.tab}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={styles.header_box_right}>
+        <SearchInput
+          onFocus={() => {
+            setTabbarSearchStatus(true);
+          }}
+          onBlur={() => {
+            setTabbarSearchStatus(false);
+          }}
+          style={tabbarSearchStatus ? { width: '400px' } : {}}
+          className={styles.header_box_search}
+        />
+        <AvtarHead className={styles.login_module} />
+      </div>
     </div>
   );
 }
+export default withRouter(Header);
