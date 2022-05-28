@@ -8,6 +8,7 @@ interface routerConfig {
   routes?: routerConfig[];
 }
 const routes: routerConfig[] = [
+  { path: '/login', component: '@/pages/apps/AppLoginEnter/LoginEnter' },
   { path: '/creater' },
   { path: '/', exact: true, redirect: '/home' },
   {

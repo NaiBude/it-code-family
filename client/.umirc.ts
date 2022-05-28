@@ -5,6 +5,7 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  styles: ['#root{height: 100%}'],
   routes: [...routes],
   fastRefresh: {},
   dva: {

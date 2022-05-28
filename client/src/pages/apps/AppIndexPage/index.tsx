@@ -1,41 +1,49 @@
-import React, { useState } from 'react';
-import { Redirect, useLocation, Link } from 'umi';
-import style from './index.less';
+import React, { useEffect, useState } from 'react';
+import { Link, Redirect } from 'umi';
+import './index.less';
+import { WithoRouterPropsInter } from '@/consts/propsTypes';
 
-const tabbarList = [
-  { id: 0, tab: '推荐', path: '/home/recommend' },
-  { id: 1, tab: '最新', path: '/home/nowplaying' },
-  { id: 2, tab: '热榜', path: '/home/topsearch' },
-];
-export default function AppIndexPage(props: any) {
-  const location = useLocation();
-  const [tabbarStatus, setTabbarStatus] = useState(0);
-  if (location.pathname === '/home' || location.pathname === '/home/') {
-    return <Redirect to='/home/recommend' />;
+export default function AppIndexPage(props: WithoRouterPropsInter) {
+  const { location } = props;
+  const [routerState, setRouterState] = useState(0);
+  if (location.pathname === '/index' || location.pathname === '/index/') {
+    return <Redirect to='/index/recommend' />;
   }
-  const tabbarClickHandle = index => {
-    setTabbarStatus(index);
-  };
+
+  const routerList = [
+    { id: 0, path: '/home', content: '推荐' },
+    { id: 1, path: '/home/nowplaying', content: '最新' },
+    { id: 2, path: '/home/topsearch', content: '热榜' },
+  ];
+
+  useEffect(() => {
+    const tab = routerList.find(item => props.location.pathname === item.path);
+    console.log('tab', tab);
+
+    setRouterState(tab.id);
+  }, []);
+
   return (
     <div>
-      <div className={style.tab}>
-        <ul className={style.tarb_header}>
-          {tabbarList.map(item => (
-            <li
-              key={item.id}
-              className={tabbarStatus === item.id ? style.tabber_elect : ''}
-              onClick={() => {
-                tabbarClickHandle(item.id);
-              }}
-            >
-              <Link to={item.path}>
-                <span>{item.tab}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div className='tabr'>
+        <div className='tabr-li'>
+          <ul>
+            {routerList.map(item => {
+              return (
+                <Link
+                  onClick={() => setRouterState(item.id)}
+                  key={item.path}
+                  to={item.path}
+                  className={routerState === item.id ? 'active' : ''}
+                >
+                  {item.content}
+                </Link>
+              );
+            })}
+          </ul>
+        </div>
       </div>
-      <div className={style.context}>{props.children}</div>
+      <div className={'context'}>{props.children}</div>
     </div>
   );
 }
