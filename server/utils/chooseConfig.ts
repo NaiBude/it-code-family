@@ -5,9 +5,13 @@ import { sqlConfig } from '../config/config';
 let selfConfig: sqlConfigInter = null;
 
 try {
-  selfConfig = require('./baseConfig');
+  selfConfig = require('..config/baseConfig');
+  console.log(selfConfig);
+
   console.log(HAVE_SELFCONFIG_TIP);
 } catch (error) {
+  console.log('error', error);
+
   console.log(NO_SELFCONFIG_TIP);
 }
 

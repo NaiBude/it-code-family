@@ -1,10 +1,10 @@
-import { initModels } from '../koaServer/initModels';
+import { knex } from '../koaServer/initModels';
 
 class baseModel {
   protected sql;
 
   constructor() {
-    this.sql = initModels();
+    this.sql = knex;
   }
 }
 export = baseModel;

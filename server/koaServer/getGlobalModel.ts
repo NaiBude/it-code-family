@@ -2,6 +2,9 @@ import * as path from 'path';
 
 const getGlobalModel = (...args) => {
   const modelPath = path.join(...args);
-  return require(`../models/${modelPath}`);
+  console.log('modelPath', modelPath);
+
+  return new (require(`../models/${modelPath}`))();
 };
-export = getGlobalModel;
+
+export { getGlobalModel };

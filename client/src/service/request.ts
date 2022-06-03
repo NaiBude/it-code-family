@@ -1,5 +1,5 @@
 import Axios, { RequestConfig } from './axios';
-import { SERVER_PORT } from '../../config/server.config';
+import { SERVER_PORT, CLIENT_PORT } from '../../config/server.config';
 
 interface RequestConfigInter<T> extends RequestConfig {
   data?: T;
@@ -11,7 +11,7 @@ interface ResponseInter<T> {
 }
 
 const requestObject = new Axios({
-  baseURL: `localhost:${SERVER_PORT}`,
+  baseURL: `http://localhost:${CLIENT_PORT}`,
   timeout: 1000 * 60,
   interceptors: {
     requestInterceptors: config => {
@@ -26,6 +26,8 @@ const requestObject = new Axios({
 });
 
 const request = <T, K = any>(config: RequestConfigInter<T>) => {
+  console.log('config', config);
+
   const { method = 'GET' } = config;
   if (method === 'get' || method === 'GET') {
     config.params = config.data;
