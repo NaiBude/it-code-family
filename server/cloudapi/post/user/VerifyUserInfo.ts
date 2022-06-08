@@ -1,4 +1,4 @@
-import { getGlobalModel } from '../../../koaServer/getGlobalModel';
+import { getGlobalModel } from '@/koaServer/getGlobalModel';
 import { ctxInter, nextInter } from '@/interface/koa';
 import { MessageInter } from '@/interface/message';
 
