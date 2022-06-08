@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Input, Button, message } from 'tdesign-react';
 import { LockOnIcon } from 'tdesign-icons-react';
 import './LoginEnter.less';
-import request from '@/service/request';
+import { DescribeUserInfo, VerifyUserInfo } from '@/api/UserInfo';
+import { checkRegular } from '@/utils/regular';
 
 export default () => {
-  const [userName, setUserName] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const login = () => {
-    const rex = /^[A-Za-z0-9_-]{4,16}$/;
-    if (userName === '' || password === '') {
-      message.error('用户名和密码不能为空！');
-    } else if (rex.test(userName) && rex.test(password)) {
-      console.log('ok');
-    } else {
-      message.error('请输入规范的用户名和密码！');
-    }
-  };
-
   const getData = async () => {
-    console.log('aaa');
-
-    const result = await request({ url: '/api/DescribeUserInfo', method: 'post' });
-    console.log('result', result);
+    const result = await VerifyUserInfo({ username, password });
   };
-  useEffect(() => {
+
+  const login = () => {
+    if (username === '' || password === '') {
+      message.error('用户名和密码不能为空！');
+    } else if (!checkRegular.check(username, 'username')) {
+      message.error('用户名不规范，请输入字符串加数字组且长度为4-16位用户名');
+    } else if (!checkRegular.check(password, 'password')) {
+      message.error('密码不规范，请输入字符串加数字组且长度为4-16位密码');
+    }
     getData();
-  }, []);
+  };
 
   return (
     <div className='login_content'>
@@ -36,7 +31,7 @@ export default () => {
         <Input
           className='from_input_login'
           onChange={value => {
-            setUserName(value as string);
+            setUsername(value as string);
           }}
           placeholder='请输入账号'
         />

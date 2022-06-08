@@ -1,13 +1,9 @@
 import Axios, { RequestConfig } from './axios';
 import { SERVER_PORT, CLIENT_PORT } from '../../config/server.config';
+import { ResponseType } from '@/consts/requestTypes';
 
 interface RequestConfigInter<T> extends RequestConfig {
   data?: T;
-}
-interface ResponseInter<T> {
-  code: number;
-  message: string;
-  data: T;
 }
 
 const requestObject = new Axios({
@@ -25,14 +21,10 @@ const requestObject = new Axios({
   },
 });
 
-const request = <T, K = any>(config: RequestConfigInter<T>) => {
-  console.log('config', config);
-
+export const request = <T>(config: RequestConfigInter<any>) => {
   const { method = 'GET' } = config;
   if (method === 'get' || method === 'GET') {
     config.params = config.data;
   }
-  return requestObject.request<ResponseInter<T>>(config);
+  return requestObject.request<ResponseType<T>>(config);
 };
-
-export default request;

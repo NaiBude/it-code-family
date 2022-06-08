@@ -3,9 +3,8 @@
     "module": "commonjs",
     "target": "esnext",
     "lib": [],
-    // "esModuleInterop": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
@@ -17,7 +16,10 @@
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "strict": false,
-    "paths": {}
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "exclude": ["node_modules"]
 }

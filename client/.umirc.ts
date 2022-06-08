@@ -20,4 +20,7 @@ export default defineConfig({
       changeOrigin: true,
     },
   },
+  request: {
+    dataField: 'data',
+  },
 });

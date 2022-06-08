@@ -56,6 +56,8 @@ class Axios {
   }
 
   request<T>(config: RequestConfig): Promise<T> {
+    console.log('config', config);
+
     return new Promise((resolve, reject) => {
       if (config.interceptors?.requestInterceptors) {
         config = config.interceptors.requestInterceptors(config);

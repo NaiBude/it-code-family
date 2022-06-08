@@ -2,10 +2,9 @@ import baseModel from '../baseModel';
 
 class User extends baseModel {
   async selectData() {
-    const result = await this.sql('user').select();
-    console.log('result', result);
+    const data = await this.knex('user').select();
     return {
-      result,
+      data,
     };
   }
 }

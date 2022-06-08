@@ -1,5 +1,5 @@
-import { getGlobalModel } from '../../koaServer/getGlobalModel';
-import { ctxInter, nextInter } from '../../interface/koa';
+import { getGlobalModel } from '../../../koaServer/getGlobalModel';
+import { ctxInter, nextInter } from '../../../interface/koa';
 
 module.exports = async function (ctx: ctxInter, next: nextInter) {
   console.log(getGlobalModel);
