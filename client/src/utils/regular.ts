@@ -6,7 +6,7 @@ export const checkRegular = (() => {
       return /^[a-zA-Z0-9_-]{4,16}$/.test(str);
     },
     password(str) {
-      return /^[a-zA-Z0-9_-]{4,16}$/.test(str);
+      return /^[.@a-zA-Z0-9_-]{4,16}$/.test(str);
     },
     email(str) {
       return /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/.test(str);

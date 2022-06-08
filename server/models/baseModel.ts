@@ -1,4 +1,4 @@
-import knex from '../koaServer/initModels';
+import knex = require('../koaServer/initModels');
 
 class baseModel {
   protected knex;
@@ -7,4 +7,4 @@ class baseModel {
     this.knex = knex;
   }
 }
-export = baseModel;
+export { baseModel };

@@ -1,4 +1,4 @@
-import { ctxInter, nextInter } from '../../interface/koa';
+import { ctxInter, nextInter } from '@/interface/koa';
 
 module.exports = async (ctx: ctxInter, next: nextInter) => {
   // const timer = Number(new Date());

@@ -118,6 +118,7 @@ module.exports = {
     'no-throw-literal': 'warn', // 禁止抛出异常字面量
     'no-unmodified-loop-condition': 'warn', // 禁用一成不变的循环条件
     'no-unused-labels': 'warn', // 禁用未使用过的标签
+    'no-unused-vars': 'warn',
     'no-useless-call': 'warn', // 禁止不必要的 .call() 和 .apply()
     'no-useless-catch': 'warn', // 禁止不必要的 catch 子句
     'no-useless-concat': 'warn', // 禁止不必要的字符串字面量或模板字面量的连接

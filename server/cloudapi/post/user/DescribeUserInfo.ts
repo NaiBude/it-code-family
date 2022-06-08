@@ -1,7 +1,7 @@
 import { getGlobalModel } from '../../../koaServer/getGlobalModel';
 import { ctxInter, nextInter } from '../../../interface/koa';
 
-module.exports = async function (ctx: ctxInter, next: nextInter) {
+export = async function (ctx: ctxInter, next: nextInter) {
   console.log(getGlobalModel);
 
   const dataModel = getGlobalModel('default', 'user');

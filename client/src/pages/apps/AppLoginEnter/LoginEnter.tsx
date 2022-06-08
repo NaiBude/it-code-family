@@ -2,15 +2,23 @@ import React, { useState } from 'react';
 import { Input, Button, message } from 'tdesign-react';
 import { LockOnIcon } from 'tdesign-icons-react';
 import './LoginEnter.less';
-import { DescribeUserInfo, VerifyUserInfo } from '@/api/UserInfo';
+import { useHistory } from 'umi';
+import { VerifyUserInfo } from '@/api/UserInfo';
 import { checkRegular } from '@/utils/regular';
 
 export default () => {
+  const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const getData = async () => {
+  const loginVerify = async () => {
     const result = await VerifyUserInfo({ username, password });
+    if (result.Code === 0) {
+      message.success(result.Message);
+    } else {
+      message.error(result.Message);
+    }
+    history.push('/');
   };
 
   const login = () => {
@@ -21,7 +29,7 @@ export default () => {
     } else if (!checkRegular.check(password, 'password')) {
       message.error('密码不规范，请输入字符串加数字组且长度为4-16位密码');
     }
-    getData();
+    loginVerify();
   };
 
   return (

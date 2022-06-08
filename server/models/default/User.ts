@@ -1,4 +1,4 @@
-import baseModel from '../baseModel';
+import { baseModel } from '../baseModel';
 
 class User extends baseModel {
   async selectData() {
