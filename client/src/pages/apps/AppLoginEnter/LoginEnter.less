@@ -9,8 +9,8 @@
     height: 360px;
     margin: auto;
     margin-top: 50px;
-    border: 2px solid #72b17f;
     background-color: #cddfd0;
+    border: 2px solid #72b17f;
     border-radius: 8px;
 
     & > span {
@@ -47,22 +47,38 @@
       }
     }
 
-    .confim_button_login {
-      width: 120px;
-      height: 36px;
-      margin-top: 50px;
-      margin-left: 200px;
-      border-color: #00911d;
+    .login_operation {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      height: 100px;
+      margin-top: 10px;
 
-      &:active {
-        .t-button__text {
-          color: #00911d;
+      .login_question {
+        width: 160px;
+        margin-left: 16px;
+
+        span {
+          display: block;
         }
       }
 
-      &:hover {
-        .t-button__text {
-          color: #00911d;
+      .confim_button_login {
+        width: 120px;
+        height: 36px;
+        margin-right: 18px;
+        border-color: #00911d;
+
+        &:active {
+          .t-button__text {
+            color: #00911d;
+          }
+        }
+
+        &:hover {
+          .t-button__text {
+            color: #00911d;
+          }
         }
       }
     }

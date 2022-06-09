@@ -3,20 +3,25 @@
     "module": "commonjs",
     "target": "esnext",
     "lib": [],
+    "types": ["node"],
     "sourceMap": true,
-    "baseUrl": ".",
+    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
+    "allowUnusedLabels": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "suppressImplicitAnyIndexErrors": true,
     "resolveJsonModule": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "allowJs": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "strict": false,
-    "paths": {}
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "exclude": ["node_modules"]
 }

@@ -1,9 +1,9 @@
 import { sqlConfigInter } from '../interface/config';
 
 export const baseConfig: sqlConfigInter = {
-  host: 'localhost',
-  port: 3306,
+  host: '120.79.29.173',
+  port: 3307,
   user: 'root',
-  password: 'admin',
+  password: '123456',
   database: 'it_code_family',
 };

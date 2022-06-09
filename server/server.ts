@@ -6,8 +6,6 @@ const app = new Server();
 
 app.init();
 
-app.use(async (ctx, next) => {
-  await next();
-});
-
 app.listen(PORT);
+
+console.log(`App starting successfully at : localhost:${PORT}`);

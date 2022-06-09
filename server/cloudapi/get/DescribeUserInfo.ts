@@ -2,9 +2,9 @@ import { getGlobalModel } from '@/koaServer/getGlobalModel';
 import { ctxInter, nextInter } from '@/interface/koa';
 
 export = async function (ctx: ctxInter, next: nextInter) {
-  // const acc = { a: 'gg' };
-  const a = getGlobalModel('default', 'user');
-  console.log('aaaa', await a.selectData());
-  ctx.body = '<h1>hello world</h1>';
+  const dataModel = getGlobalModel('default', 'user');
+  const result = await dataModel.selectData();
+  ctx.body = result;
+  ctx.body = 'result';
   await next();
 };

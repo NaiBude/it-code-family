@@ -55,7 +55,7 @@ module.exports = {
     'no-unreachable': 'warn', // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
     'no-unsafe-finally': 'warn', // 禁止在 finally 语句块中出现控制流语句
     'no-unsafe-negation': 'warn', // 禁止对关系运算符的左操作数使用否定操作符
-    'require-atomic-updates': 'warn', // 禁止由于 await 或 yield的使用而可能导致出现竞态条件的赋值
+    // 'require-atomic-updates': 'warn', // 禁止由于 await 或 yield的使用而可能导致出现竞态条件的赋值
     'use-isnan': 'warn', // 要求使用 isNaN() 检查 NaN
     'valid-typeof': 'error', // 强制 typeof 表达式与有效的字符串进行比较,防止拼写错误
     'accessor-pairs': 'warn', // 强制 getter 和 setter 在对象中成对出现
@@ -110,7 +110,7 @@ module.exports = {
       },
     ], // 禁用对象的某些属性
     'no-return-assign': 'error', // 禁止在 return 语句中使用赋值语句
-    'no-return-await': 'error', // 禁用不必要的 return await
+    // 'no-return-await': 'error', // 禁用不必要的 return await
     'no-self-assign': 'warn', // 禁止自我赋值
     'no-self-compare': 'warn', // 禁止自身比较
     'no-sequences': 'warn', // 禁用逗号操作符
@@ -118,6 +118,7 @@ module.exports = {
     'no-throw-literal': 'warn', // 禁止抛出异常字面量
     'no-unmodified-loop-condition': 'warn', // 禁用一成不变的循环条件
     'no-unused-labels': 'warn', // 禁用未使用过的标签
+    'no-unused-vars': 'warn',
     'no-useless-call': 'warn', // 禁止不必要的 .call() 和 .apply()
     'no-useless-catch': 'warn', // 禁止不必要的 catch 子句
     'no-useless-concat': 'warn', // 禁止不必要的字符串字面量或模板字面量的连接
@@ -126,7 +127,7 @@ module.exports = {
     'no-void': 'warn', // 禁用 void 操作符
     'no-warning-comments': 'warn', // 禁止在注释中使用特定的警告术语 //TODO or //FIXME
     'no-with': 'warn', // 禁用 with 语句
-    'prefer-named-capture-group': 'warn', // 建议在正则表达式中使用命名捕获组
+    // 'prefer-named-capture-group': 'warn', // 建议在正则表达式中使用命名捕获组
     'prefer-promise-reject-errors': 'warn', // 要求使用 Error 对象作为 Promise 拒绝的原因
     'require-await': 'warn', // 禁止使用不带 await 表达式的 async 函数
     'vars-on-top': 'warn', // 要求所有的 var 声明出现在它们所在的作用域顶部
@@ -172,7 +173,7 @@ module.exports = {
     'jsx-quotes': ['warn', 'prefer-single'], // 强制在 JSX 属性中使用一致的单引号或双引号
     'linebreak-style': ['error', 'unix'], // 强制使用一致的换行符风格
     'lines-between-class-members': ['error', 'always'], // 要求或禁止在类成员之间出现空行
-    'new-cap': 'warn', // 要求构造函数首字母大写
+    // 'new-cap': 'warn', // 要求构造函数首字母大写
     'new-parens': 'warn', // 要求调用无参构造函数时带括号
     'no-array-constructor': 'warn', // 禁止使用 Array 构造函数
     'no-lonely-if': 'warn', // 禁止 if 语句作为唯一语句出现在 else 语句块中
@@ -191,7 +192,7 @@ module.exports = {
     'space-infix-ops': 'warn', // 要求操作符周围有空格
     'switch-colon-spacing': 'warn', // 强制在 switch 的冒号左右有空格
     'template-tag-spacing': ['error', 'always'], // 要求或禁止在模板标记和它们的字面量之间有空格
-    'wrap-regex': 'warn', // 要求正则表达式被括号括起来
+    // 'wrap-regex': 'warn', // 要求正则表达式被括号括起来
     'no-const-assign': 'warn', // 禁止修改 const 声明的变量
     'no-dupe-class-members': 'warn', // 禁止类成员中出现重复的名称
     'no-duplicate-imports': 'warn', // 禁止重复模块导入

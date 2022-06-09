@@ -16,7 +16,11 @@ const initModels = function () {
     debug: true,
     log: { ...dataLog },
   });
+  console.log('aaaaaaaaaa');
 
   return sql;
 };
-export { initModels };
+
+const knexModel = initModels();
+
+export = knexModel;

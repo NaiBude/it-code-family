@@ -9,7 +9,17 @@
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/nodemon",
-      "runtimeArgs": ["--watch", "./", "-e", "ts,js,json", "--exec", "ts-node"],
+      "runtimeArgs": [
+        "--watch",
+        "./",
+        "-e",
+        "ts,js,json",
+        "--exec",
+        "ts-node",
+        "-r",
+        "tsconfig-paths/register",
+        "--files"
+      ],
       "skipFiles": [],
       "program": "${workspaceFolder}/server/server.ts",
       "cwd": "${workspaceFolder}/server"

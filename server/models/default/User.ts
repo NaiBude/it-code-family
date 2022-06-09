@@ -1,11 +1,11 @@
-import baseModel from '../baseModel';
+import { baseModel } from '../baseModel';
 
-export class User extends baseModel {
+class User extends baseModel {
   async selectData() {
-    await this.sql('user').insert({ username: 'aaaa', password: 'cccc' });
-    const result = await this.sql.select().from('user');
+    const data = await this.knex('user').select();
     return {
-      result,
+      data,
     };
   }
 }
+export = User;
