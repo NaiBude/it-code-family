@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './index.less';
-// import { request } from '../service/request';
-import Header from '@/layouts/header';
-import Sidebar from '@/components/SideBar/Sidebar';
+import Header from '@/layouts/Header';
 import 'tdesign-react/es/style/index.css';
 import Button from '@/components/SideBar/Button';
 

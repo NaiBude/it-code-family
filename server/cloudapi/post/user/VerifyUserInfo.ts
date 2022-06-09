@@ -4,7 +4,6 @@ import { MessageInter } from '@/interface/message';
 import { Encryption } from '@/utils/encoder';
 
 export = async function (ctx: ctxInter, next: nextInter) {
-  console.log('ctx.request.body', ctx.request.body);
   const data = ctx.request.body;
   const dataModel = getGlobalModel('default', 'user');
   const result = await dataModel.selectData();
