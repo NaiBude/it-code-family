@@ -1,52 +1,51 @@
-import React from 'react';
+import { connect } from 'umi';
+import React, { useEffect } from 'react';
 import styles from './index.less';
 import Header from '@/layouts/Header';
 import 'tdesign-react/es/style/index.css';
 import Button from '@/components/SideBar/Button';
 
-const context = [
-  {
-    id: 1,
-    text: 'HTML',
-    path: 'index/1',
-  },
-  {
-    id: 2,
-    text: '前端',
-    path: 'index/2',
-  },
-  {
-    id: 3,
-    text: '后端',
-    path: 'index/3',
-  },
-  {
-    id: 4,
-    text: '前端',
-    path: 'index/4',
-  },
-  {
-    id: 5,
-    text: '后端',
-    path: 'index/5',
-  },
-  {
-    id: 6,
-    text: '前端',
-    path: 'index/6',
-  },
-  {
-    id: 7,
-    text: '后端',
-    path: 'index/7',
-  },
-];
-export default function IndexPage(props) {
+function IndexPage(props) {
+  const { userInfo, dispatch } = props;
+
+  useEffect(() => {
+    dispatch({ type: 'userInfo/verifyTokenUser' });
+  }, []);
+
+  // useEffect(() => {
+  //   let count = 1;
+  //   console.log('feafwaf');
+
+  //   const ws = new WebSocket('ws://localhost:3000');
+  //   console.log(ws);
+
+  //   ws.onopen = function (evt) {
+  //     console.log('connect open');
+  //     console.log(evt);
+  //   };
+  //   ws.onmessage = function (evt) {
+  //     console.log(`后端发来的数据:${evt.data}`);
+  //     if (count++ === 10) {
+  //       ws.close();
+  //     }
+  //   };
+  //   ws.onclose = function (evt) {
+  //     console.log(evt);
+  //     console.log('connection close');
+  //   };
+  //   ws.onerror = function (evt) {
+  //     console.log(evt);
+  //     console.log('error!!');
+  //   };
+  // }, []);
+
   return (
     <div className={styles.center_content}>
-      <Header></Header>
-      <Button listdata={context} onClick />
+      <Header userInfo={userInfo}></Header>
       <div>{props.children}</div>
     </div>
   );
 }
+export default connect(userInfo => {
+  return userInfo.userInfo;
+})(IndexPage);

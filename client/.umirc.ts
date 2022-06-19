@@ -12,6 +12,7 @@ export default defineConfig({
   fastRefresh: {},
   dva: {
     immer: true,
+    hmr: false,
   },
   proxy: {
     '/api': {

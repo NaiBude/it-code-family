@@ -10,31 +10,30 @@ interface routerConfig {
 const routes: routerConfig[] = [
   {
     path: '/login',
-    component: '@/pages/apps/AppLoginEnter/LoginEnter',
+    component: '@/pages/apps/AppLoginEnter/LoginEnter', //登陆页面
   },
   {
     path: '/singin',
-    component: '@/pages/apps/AppSingIn/singIn',
+    component: '@/pages/apps/AppSingIn/singIn', //注册页面
   },
-
-  { path: '/creater' },
-  { path: '/', exact: true, redirect: '/home' },
+  // { path: '/creater' },
+  { path: '/', exact: true, redirect: '/home' }, //重定向主页
   {
     path: '/',
     component: '@/pages/index',
     routes: [
-      // { path: '/', component: '@/pages/apps/AppIndexPage/index' },
+      { path: '/', component: '@/pages/apps/AppCoreHomePage/index' },
       {
         path: '/home',
-        component: '@/pages/apps/AppIndexPage/index',
+        component: '@/pages/apps/AppCoreHomePage/index', //首页
         routes: [
           {
-            path: '/home/recommend',
+            path: '/home',
             exact: true,
-            component: '@/pages/apps/AppIndexPage/Tabs/Recommend',
+            component: '@/pages/apps/AppCoreHomePage/Tabs/Recommend',
           },
-          { path: '/home/nowplaying', component: '@/pages/apps/AppIndexPage/Tabs/Nowplaying' },
-          { path: '/home/topsearch', component: '@/pages/apps/AppIndexPage/Tabs/TopSearch' },
+          { path: '/home/nowplaying', component: '@/pages/apps/AppCoreHomePage/Tabs/Nowplaying' },
+          { path: '/home/topsearch', component: '@/pages/apps/AppCoreHomePage/Tabs/TopSearch' },
         ],
       },
       { path: '/study', component: '@/pages/apps/AppStudyPage' },
@@ -42,32 +41,12 @@ const routes: routerConfig[] = [
       { path: '/bbs', component: '@/pages/apps/AppBbsPage' },
       { path: '/app', component: '@/pages/apps/AppPage' },
       { path: '/plug', component: '@/pages/apps/AppPlugPage' },
+      {
+        path: 'article',
+        component: '@/pages/apps/AppArticleContentShow',
+      },
       { component: '@/pages/NotFound', redirect: '/home' },
     ],
   },
-  // { component: '@/pages/NotFound' },
-  // {
-  //   component: '@/layouts/header',
-  //   routes: [
-  //     { path: '/', exact: true, redirect: '/index/recommend' },
-  //     { path: '/', component: '@/pages/index' },
-  //     {
-  //       path: '/index',
-  //       exact: false,
-  //       component: '@/pages/apps/AppIndexPage/index',
-  //       routes: [
-  //         { path: '/index/recommend', component: '@/pages/apps/AppIndexPage/Tabs/Recommend' },
-  //         { path: '/index/nowplaying', component: '@/pages/apps/AppIndexPage/Tabs/Nowplaying' },
-  //         { path: '/index/topsearch', component: '@/pages/apps/AppIndexPage/Tabs/TopSearch' },
-  //       ],
-  //     },
-  //     { path: '/study', component: '@/pages/apps/AppStudyPage' },
-  //     { path: '/news', component: '@/pages/apps/AppNewsPage' },
-  //     { path: '/bbs', component: '@/pages/apps/AppBbsPage' },
-  //     { path: '/app', component: '@/pages/apps/AppPage' },
-  //     { path: '/plug', component: '@/pages/apps/AppPlugPage' },
-  //     { component: '@/pages/NotFound', exact: true },
-  //   ],
-  // },
 ];
 export { routes };

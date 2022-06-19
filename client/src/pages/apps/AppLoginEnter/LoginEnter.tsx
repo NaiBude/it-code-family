@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input, Button, message } from 'tdesign-react';
 import { LockOnIcon } from 'tdesign-icons-react';
 import './LoginEnter.less';
-import { useHistory } from 'umi';
+import { useHistory, connect } from 'umi';
 import { VerifyUserInfo } from '@/api/UserInfo';
 import { checkRegular } from '@/utils/regular';
 
-export default () => {
+const LoginEnter = ({ dispatch, ...res }) => {
   const history = useHistory();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -14,11 +14,15 @@ export default () => {
   const loginVerify = async () => {
     const result = await VerifyUserInfo({ username, password });
     if (result.Code === 0) {
+      dispatch({ type: 'userInfo/setUserInfo', payload: result.Data });
       message.success(result.Message);
-    } else {
+      localStorage.setItem('userInfo', JSON.stringify(result.Data));
+      history.push('/home');
+    } else if (result.Code === -1) {
       message.error(result.Message);
+    } else {
+      message.error('服务器崩溃！');
     }
-    history.push('/');
   };
 
   const login = () => {
@@ -72,3 +76,9 @@ export default () => {
     </div>
   );
 };
+export default connect(({ userInfo, ...res }) => {
+  console.log('res', res);
+  console.log('userInfo', userInfo);
+
+  return userInfo;
+})(LoginEnter);

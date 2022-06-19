@@ -1,9 +1,40 @@
 .avtar_login {
   display: inline-block;
-  color: #333;
 
-  &:hover {
-    color: #00911d;
+  .none_login {
+    a {
+      color: #333;
+
+      &:hover {
+        color: #00911d;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .header_avtar {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border: 1px solid #00911d;
+    border-radius: 50%;
     cursor: pointer;
+  }
+}
+
+.popup_header_avtar {
+  position: relative;
+  width: 150px;
+  padding: 8px 0 0;
+
+  .popup_header_username {
+    height: 40px;
+    margin-right: 10px;
+    margin-left: 10px;
+    overflow: hidden;
+    line-height: 40px;
+    white-space: nowrap;
+    text-align: center;
+    text-overflow: ellipsis;
   }
 }

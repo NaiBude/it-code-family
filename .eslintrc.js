@@ -118,7 +118,7 @@ module.exports = {
     'no-throw-literal': 'warn', // 禁止抛出异常字面量
     'no-unmodified-loop-condition': 'warn', // 禁用一成不变的循环条件
     'no-unused-labels': 'warn', // 禁用未使用过的标签
-    'no-unused-vars': 'warn',
+    // 'no-unused-vars': 'warn', // 禁止未使用的变量出现，此规则会导致ts接口定义参数类型出现报错
     'no-useless-call': 'warn', // 禁止不必要的 .call() 和 .apply()
     'no-useless-catch': 'warn', // 禁止不必要的 catch 子句
     'no-useless-concat': 'warn', // 禁止不必要的字符串字面量或模板字面量的连接
@@ -147,7 +147,7 @@ module.exports = {
     ], // 禁用特定的全局变量
     'no-shadow-restricted-names': 'warn', // 禁止将标识符定义为受限的名字
     'no-undef-init': 'warn', // 禁止将变量初始化为 undefined
-    'no-undefined': 'warn', // 禁止将 undefined 作为标识符
+    // 'no-undefined': 'warn', // 禁止将 undefined 作为标识符
     'no-use-before-define': 'warn', // 禁止在变量定义之前使用它们中
     'no-buffer-constructor': 'warn', // 禁用 Buffer() 构造函数
     'no-mixed-requires': 'warn', // 禁止混合常规变量声明和 require 调用
@@ -169,7 +169,7 @@ module.exports = {
     'eol-last': ['error', 'always'], // 要求或禁止文件末尾保留一行空行
     'func-call-spacing': ['error', 'never'], // 要求或禁止在函数标识符和其调用之间有空格
     'implicit-arrow-linebreak': ['warn', 'beside'], // 强制隐式返回的箭头函数体的位置
-    indent: ['warn', 2], // 强制使用一致的缩进
+    // indent: ['warn', 2], // 强制使用一致的缩进,使用pretttier做缩进,eslint一般需要取消改规则
     'jsx-quotes': ['warn', 'prefer-single'], // 强制在 JSX 属性中使用一致的单引号或双引号
     'linebreak-style': ['error', 'unix'], // 强制使用一致的换行符风格
     'lines-between-class-members': ['error', 'always'], // 要求或禁止在类成员之间出现空行

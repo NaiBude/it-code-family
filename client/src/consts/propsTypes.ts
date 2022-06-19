@@ -1,7 +1,6 @@
-export interface WithoRouterPropsInter {
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { RouteComponentProps } from 'react-router';
+
+export interface WithoRouterPropsInter extends RouteComponentProps<any> {
   [propsName: string]: any;
-  location: {
-    [propsName: string]: any;
-    pathname: string;
-  };
 }

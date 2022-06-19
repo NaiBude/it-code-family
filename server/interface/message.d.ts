@@ -1,5 +1,5 @@
 export interface MessageInter<T> {
   Code: number;
-  Data: T;
+  Data: T | null;
   Message: string;
 }

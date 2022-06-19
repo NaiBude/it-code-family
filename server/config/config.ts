@@ -11,3 +11,12 @@ export const sqlConfig: sqlConfigInter = {
 export const baseModul = 'mysql';
 
 export const PORT = 3000;
+
+export const cos = {
+  SecretId: 'AKID3vXsynLcePcYEenfGbfSyECtJTN0NTJs',
+  SecretKey: 'KNAgvsYy81f3D7k8F5ewyjDQN4VgbFyR',
+};
+export const bucket = {
+  Bucket: 'itfamilycode-1308254816',
+  Region: 'ap-guangzhou',
+};

@@ -24,7 +24,7 @@
     }
   },
   "typeRoots": ["./typings"],
-  "include": ["./src"],
+  "include": ["./"],
   "exclude": [
     "node_modules",
     "build",

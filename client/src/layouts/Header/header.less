@@ -7,12 +7,42 @@
   box-shadow: 0 2px 4px 0 #f0f0f0;
 
   .header_box_right {
-    height: 41px;
-    padding-top: 9px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+
+    .creation_station {
+      height: 36px;
+      margin-right: 10px;
+      padding: 0 20px;
+      color: white;
+      line-height: 36px;
+      background-color: #00911d;
+      border-radius: 18px;
+      cursor: pointer;
+
+      &:hover {
+        color: #eee;
+        background-color: #047e1c;
+      }
+    }
+
+    .message_dymanic {
+      width: 50px;
+      height: 30px;
+      line-height: 30px;
+      cursor: pointer;
+
+      &:hover {
+        color: #00911d;
+      }
+    }
   }
 
   .header_image {
-    height: 20px;
+    width: 140px;
+    height: 36px;
+    margin-left: 10px;
   }
 
   .tabber_header {

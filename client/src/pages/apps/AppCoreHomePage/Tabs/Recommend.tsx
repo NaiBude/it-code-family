@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconFont } from 'tdesign-icons-react';
-import { List } from 'tdesign-react';
+import { List, Comment } from 'tdesign-react';
 
 export default function Recommend() {
   const actionTextStyle = {
@@ -51,16 +51,16 @@ export default function Recommend() {
 
   return (
     <List>
-      {/* {commentsData.map((item, index) => (
-        <ListItem key={item.id}>
+      {commentsData.map((item, index) => (
+        <List.ListItem key={item.id}>
           <Comment
             author={item.author}
             datetime={item.datetime}
             content={item.content}
             actions={actions}
           />
-        </ListItem>
-      ))} */}
+        </List.ListItem>
+      ))}
     </List>
   );
 }

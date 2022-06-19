@@ -1,4 +1,5 @@
 import { request } from '@/service/axiosRequest';
+import { UserInfoInter } from '@/consts/infoType';
 
 /**
  * 用于查询用户数据信息
@@ -18,10 +19,22 @@ export async function DescribeUserInfo(params = null) {
  * @param params
  * @returns
  */
-export async function VerifyUserInfo(params: { username: string; password: string }) {
-  const result = await request<null>({
+export async function VerifyUserInfo(params: { username?: string; password?: string }) {
+  const result = await request<null | UserInfoInter>({
     url: '/api/user/VerifyUserInfo',
     method: 'post',
+    data: params,
+  });
+  return { ...result };
+}
+/**
+ * 用于获取用户头像
+ * @param params
+ */
+export async function AcquireUserAvtar(params: { photokey: string }) {
+  const result = await request<{ Url: string }>({
+    url: '/api/user/AcquireUserAvtar',
+    method: 'get',
     data: params,
   });
   return { ...result };

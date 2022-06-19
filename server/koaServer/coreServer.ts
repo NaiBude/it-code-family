@@ -5,17 +5,30 @@ import { initMiddleWare } from './initMiddleWare';
 
 // const bodyParser = new BodyParser();
 class server extends Koa {
-  init() {
+  constructor() {
+    super();
     this.use(
       bodyParser({
         onerror(err, ctx) {
-          ctx.throw('body parse error', 422);
+          ctx.throw('body parse error');
         },
       }),
     );
     initMiddleWare(this);
     this.use(initCloudApi.routes()).use(initCloudApi.allowedMethods());
   }
+
+  // init() {
+  //   this.use(
+  //     bodyParser({
+  //       onerror(err, ctx) {
+  //         ctx.throw('body parse error');
+  //       },
+  //     }),
+  //   );
+  //   initMiddleWare(this);
+  //   this.use(initCloudApi.routes()).use(initCloudApi.allowedMethods());
+  // }
 }
 
 export = server;
