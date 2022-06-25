@@ -3,7 +3,7 @@ import { getGlobalModel } from '@/koaServer/getGlobalModel';
 import { ctxInter, nextInter } from '@/interface/koa';
 import { MessageInter } from '@/interface/message';
 import { Encryption, Decryption } from '@/utils/encoder';
-import DefaultUserInter from '@/models/default/User';
+import DefaultUserInter from '@/models/default/user';
 import { formatNullConvert } from '@/utils/formatConvert';
 
 export = async function (ctx: ctxInter, next: nextInter) {
@@ -89,8 +89,7 @@ export = async function (ctx: ctxInter, next: nextInter) {
     message.Code = 1;
     message.Message = '无登陆状态';
   }
-  ctx.body = {
+  return {
     ...message,
   };
-  await next();
 };

@@ -17,18 +17,6 @@ class server extends Koa {
     initMiddleWare(this);
     this.use(initCloudApi.routes()).use(initCloudApi.allowedMethods());
   }
-
-  // init() {
-  //   this.use(
-  //     bodyParser({
-  //       onerror(err, ctx) {
-  //         ctx.throw('body parse error');
-  //       },
-  //     }),
-  //   );
-  //   initMiddleWare(this);
-  //   this.use(initCloudApi.routes()).use(initCloudApi.allowedMethods());
-  // }
 }
 
 export = server;

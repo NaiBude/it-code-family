@@ -9,6 +9,7 @@ export = async function (ctx: ctxInter, next: nextInter) {
     Data: null,
     Message: '头像获取成功',
   };
+
   if (query?.photokey) {
     const key: string = query.photokey as string;
     const result = await getAvtarUrl(key);
@@ -23,8 +24,7 @@ export = async function (ctx: ctxInter, next: nextInter) {
     message.Code = -1;
     message.Message = '获取头像失败';
   }
-  ctx.body = {
+  return {
     ...message,
   };
-  await next();
 };

@@ -8,7 +8,13 @@ const handleCloudApiPath = (method: string, parPath: string, path: string): void
       const api = require(`.${parPath}/${path}`);
       initCloudApi[method](
         `${parPath}/${path}`.replace(`./cloudapi/${method}`, '').split('.')[0],
-        api,
+        async (ctx, next) => {
+          const res = await api(ctx, next);
+          if (res) {
+            ctx.body = res;
+            next();
+          }
+        },
       );
       console.log('加载成功', `${parPath}/${path}'`);
     } catch (error) {

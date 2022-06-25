@@ -4,12 +4,35 @@ import styles from './index.less';
 import Header from '@/layouts/Header';
 import 'tdesign-react/es/style/index.css';
 import Button from '@/components/SideBar/Button';
+import { DescribeArticleList } from '@/api/article';
 
 function IndexPage(props) {
   const { userInfo, dispatch } = props;
 
+  const getdata = async () => {
+    const result = await DescribeArticleList({
+      Filter: [
+        { Name: 'tag-parent', Values: ['前端'] },
+        { Name: 'tag-children', Values: ['webpack'] },
+        { Name: 'show_count', Values: ['12'] },
+      ],
+      Sort: [
+        {
+          Name: 'show_count',
+          Value: 'Desc',
+        },
+        {
+          Name: 'create_time',
+          Value: 'Desc',
+        },
+      ],
+    });
+    console.log('result:::', result);
+  };
+
   useEffect(() => {
     dispatch({ type: 'userInfo/verifyTokenUser' });
+    getdata();
   }, []);
 
   // useEffect(() => {

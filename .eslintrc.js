@@ -177,7 +177,7 @@ module.exports = {
     'new-parens': 'warn', // 要求调用无参构造函数时带括号
     'no-array-constructor': 'warn', // 禁止使用 Array 构造函数
     'no-lonely-if': 'warn', // 禁止 if 语句作为唯一语句出现在 else 语句块中
-    'no-mixed-operators': 'warn', // 禁止混合使用不同的操作符
+    // 'no-mixed-operators': 'warn', // 禁止混合使用不同的操作符
     'no-mixed-spaces-and-tabs': 'warn', // 禁止使用 空格 和 tab 混合缩进
     'no-multi-assign': 'warn', // 禁止连续赋值
     'no-multiple-empty-lines': 'warn', // 禁止出现多行空行

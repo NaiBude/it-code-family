@@ -30,10 +30,9 @@ export default function AppIndexPage(props: WithoRouterPropsInter) {
           <ul>
             {routerList.map((item, index) => {
               return (
-                <>
+                <li key={item.id} style={{ display: 'inline-block' }}>
                   <Link
                     onClick={() => setRouterState(item.id)}
-                    key={item.path}
                     to={item.path}
                     className={`${styles.link_style} ${
                       routerState === item.id ? styles.active : ''
@@ -44,7 +43,7 @@ export default function AppIndexPage(props: WithoRouterPropsInter) {
                   {index !== routerList.length - 1 && (
                     <span className={styles.interval_tab}>|</span>
                   )}
-                </>
+                </li>
               );
             })}
           </ul>
