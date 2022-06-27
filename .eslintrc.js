@@ -156,7 +156,7 @@ module.exports = {
     'no-process-exit': 'warn', // 禁用 process.exit()
     'no-restricted-modules': ['error', 'fs', 'cluster'], // 禁用node的某些模块
     'no-sync': 'warn', // 禁用同步方法
-    camelcase: 'warn', // 强制使用骆驼拼写法命名约定
+    // camelcase: 'warn', // 强制使用骆驼拼写法命名约定
     'comma-dangle': ['error', 'always-multiline'], // 要求或禁止末尾逗号
     'comma-spacing': [
       'warn',

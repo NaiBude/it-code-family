@@ -13,7 +13,6 @@ export default function Card(props: PropsType) {
       onClick={() => {
         onClick();
       }}
-      key={props.key}
       className={styles.card}
     >
       {icon}

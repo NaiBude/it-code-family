@@ -3,7 +3,7 @@ import Markdown from 'markdown-it';
 
 const md = new Markdown();
 export default props => {
-  const result = md.render('# markdown-it rulezz!');
+  const result = md.render('fdsafdsafdsafsda');
   console.log('result', result);
 
   return (

@@ -3,3 +3,7 @@ export interface ResponseType<T> {
   Message: string;
   Data: T;
 }
+export interface ArticleListResposeType {
+  article_title: string;
+  collect: string;
+}

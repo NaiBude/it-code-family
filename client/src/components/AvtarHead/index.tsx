@@ -29,7 +29,7 @@ function AvtarHead(props: propType) {
 
   const history = useHistory();
   const getAvtar = async () => {
-    const result = await AcquireUserAvtar({ photokey: userInfo.photokey });
+    const result = await AcquireUserAvtar({ photo_key: userInfo.photo_key });
     if (result.Code === 0 && result.Data?.Url) {
       setAvtar(result.Data.Url);
     }
@@ -155,7 +155,14 @@ function AvtarHead(props: propType) {
           >
             登陆
           </a>
-          /<a>注册</a>
+          /
+          <a
+            onClick={() => {
+              history.push('/singin');
+            }}
+          >
+            注册
+          </a>
         </div>
       )}
     </div>

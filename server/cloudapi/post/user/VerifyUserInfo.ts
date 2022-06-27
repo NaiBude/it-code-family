@@ -3,12 +3,12 @@ import { getGlobalModel } from '@/koaServer/getGlobalModel';
 import { ctxInter, nextInter } from '@/interface/koa';
 import { MessageInter } from '@/interface/message';
 import { Encryption, Decryption } from '@/utils/encoder';
-import DefaultUserInter from '@/models/default/user';
+import DefaultUserInter from '@/models/default/user_info';
 import { formatNullConvert } from '@/utils/formatConvert';
 
 export = async function (ctx: ctxInter, next: nextInter) {
   const data = ctx.request.body;
-  const dataModel: DefaultUserInter = getGlobalModel('default', 'user');
+  const dataModel: DefaultUserInter = getGlobalModel('default', 'user_info');
   const message: MessageInter<any> = {
     Code: 0,
     Data: null,
@@ -33,7 +33,7 @@ export = async function (ctx: ctxInter, next: nextInter) {
           maxAge: 60 * 1000 * 5,
           httpOnly: false,
         });
-        delete userInfo.password;
+        // delete userInfo.password;
         message.Data = formatNullConvert(userInfo);
       } else {
         message.Code = -1;
@@ -69,7 +69,7 @@ export = async function (ctx: ctxInter, next: nextInter) {
         if (result.data && Array.isArray(result.data)) {
           message.Message = 'token验证成功';
           const userInfo = result.data[0];
-          delete userInfo.password;
+          // delete userInfo.password;
           message.Data = formatNullConvert(userInfo);
           message.Code = 0;
         } else {

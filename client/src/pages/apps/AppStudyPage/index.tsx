@@ -1,18 +1,12 @@
 import React from 'react';
-import './style.less';
+// import Input from 'tdesign-react/es/input';
+import styles from './style.less';
+import MarkdownEditor from '@/components/MarkdownEditor';
 
 export default function AppStudyPage() {
   return (
-    <div className='box'>
-      <div>
-        <ul>
-          <li className='a'></li>
-          <li className='b'></li>
-          <li className='c'></li>
-        </ul>
-      </div>
-      <div className='b'></div>
-      <div className='c'></div>
+    <div className={styles.box}>
+      <MarkdownEditor />
     </div>
   );
 }

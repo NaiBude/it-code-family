@@ -28,6 +28,7 @@ function IndexPage(props) {
       ],
     });
     console.log('result:::', result);
+    result.Data;
   };
 
   useEffect(() => {

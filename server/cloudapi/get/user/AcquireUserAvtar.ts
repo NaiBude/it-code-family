@@ -10,8 +10,8 @@ export = async function (ctx: ctxInter, next: nextInter) {
     Message: '头像获取成功',
   };
 
-  if (query?.photokey) {
-    const key: string = query.photokey as string;
+  if (query?.photo_key) {
+    const key: string = query.photo_key as string;
     const result = await getAvtarUrl(key);
 
     if (result.Url) {
@@ -24,6 +24,7 @@ export = async function (ctx: ctxInter, next: nextInter) {
     message.Code = -1;
     message.Message = '获取头像失败';
   }
+
   return {
     ...message,
   };

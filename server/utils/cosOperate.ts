@@ -23,9 +23,13 @@ export const getAvtarUrl: GetAvtarUrlInter = key => {
     );
   })
     .then((data: string) => {
+      console.log('data', data);
+
       return data;
     })
     .catch(err => {
+      console.log('aaaasaw');
+
       return err;
     });
 };

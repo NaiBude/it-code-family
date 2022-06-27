@@ -44,12 +44,15 @@ class ArticleInfo extends baseModel {
         })),
       ]);
     }
+
     if (PageNumber && PageSize) {
-      sql.limit(PageSize).offset(PageNumber * PageSize);
+      sql.limit(PageSize).offset(PageNumber * PageSize - 1);
     }
     let data = null;
     try {
-      data = await sql.select(['id', 'show_count', 'create_time']);
+      data = await sql
+        .join('user_public_info', 'article_info.username', '=', 'user_public_info.username')
+        .select();
     } catch (error) {
       return {
         Code: -1,

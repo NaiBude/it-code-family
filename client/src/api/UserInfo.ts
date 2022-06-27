@@ -31,7 +31,7 @@ export async function VerifyUserInfo(params: { username?: string; password?: str
  * 用于获取用户头像
  * @param params
  */
-export async function AcquireUserAvtar(params: { photokey: string }) {
+export async function AcquireUserAvtar(params: { photo_key: string }) {
   const result = await request<{ Url: string }>({
     url: '/api/user/AcquireUserAvtar',
     method: 'get',

@@ -3,5 +3,5 @@ export interface UserInfoInter {
   username?: string;
   nickname?: string;
   birthday?: string;
-  photokey?: string;
+  photo_key?: string;
 }

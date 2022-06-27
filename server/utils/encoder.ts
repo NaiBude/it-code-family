@@ -10,6 +10,7 @@ export const Encryption = str => {
   }
   return editorStr;
 };
+
 export const Decryption = token => {
   let beDecoded = '';
   for (let i = 0; i < token.length; i++) {

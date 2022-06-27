@@ -8,14 +8,17 @@ interface StateType {
 
 const UserInfo: ModelType<StateType> = {
   namespace: 'userInfo',
+
   state: {
     userInfo: {},
   },
+
   reducers: {
     setUserInfo(state, action) {
       return { ...state, userInfo: action.payload };
     },
   },
+
   effects: {
     *verifyTokenUser({ payload }, { call, put }) {
       const result = yield call(VerifyUserInfo);
