@@ -7,3 +7,9 @@ export interface ArticleListResposeType {
   article_title: string;
   collect: string;
 }
+
+export interface ArtcleContentInter {
+  id: number;
+  pre_id: number;
+  content: string;
+}

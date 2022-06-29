@@ -3,15 +3,25 @@ import { ctxInter, nextInter } from '@/interface/koa';
 import DefaultUserInter from '@/models/default/article_info';
 
 export = async function (ctx: ctxInter, next: nextInter) {
-  const { Filter = [], Sort = [], PageNumber = 0, PageSize = 0 } = ctx.request.body;
+  const { ParentId, Id } = ctx.request.body;
 
   const dataModel: DefaultUserInter = getGlobalModel('default', 'article_info');
 
-  const result = await dataModel.selectData({ Filter, Sort, PageNumber, PageSize });
+  const result = await dataModel.selectArticleContent({ ParentId, Id });
+
+  if (result.Code === -2) {
+    return {
+      Code: 0,
+      Message: '未知错误',
+      Data: null,
+    };
+  }
 
   if (result.Code === -1) {
     return {
-      ...result,
+      Code: 0,
+      Message: '参数错误',
+      Data: null,
     };
   }
 
