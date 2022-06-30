@@ -21,6 +21,7 @@ const UserInfo: ModelType<StateType> = {
 
   effects: {
     *verifyTokenUser({ payload }, { call, put }) {
+      localStorage.removeItem('userInfo');
       const result = yield call(VerifyUserInfo);
       if (result.Code === 0) {
         yield put({

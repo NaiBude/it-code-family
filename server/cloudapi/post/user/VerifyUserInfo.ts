@@ -55,7 +55,12 @@ export = async function (ctx: ctxInter, next: nextInter) {
         const cookies = item.replace('=', ':').split(':');
         return [...cookies];
       });
-    const accessToken = tokenList.find(item => item[0] === 'ACCESSTOKEN')[1];
+    console.log('tokenList', tokenList);
+    let accessToken = '';
+    const tokenCurrent = tokenList.find(item => item[0] === 'ACCESSTOKEN');
+    if (tokenCurrent?.length) {
+      accessToken = tokenCurrent[1];
+    }
     const tokenInfoList = Decryption(accessToken).split('/');
     const endTimeStamp = Number(tokenInfoList[0]) + Number(tokenInfoList[1]);
     const nowTimeStamp = Number(new Date());

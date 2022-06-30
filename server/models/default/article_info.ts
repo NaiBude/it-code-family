@@ -12,7 +12,14 @@ type ArticleInfoParamsType = {
   Sort: { Name: string; Value: 'ASC' | 'DESC' }[];
 };
 
+type ArticleContentType = { ParentId?: number; Id?: number };
+
 class ArticleInfo extends baseModel {
+  /**
+   *
+   * @param param0
+   * @returns
+   */
   async selectData({ Filter, Sort, PageNumber, PageSize }: ArticleInfoParamsType) {
     const sql = this.knex('article_info');
     if (Filter?.length) {
@@ -78,6 +85,42 @@ class ArticleInfo extends baseModel {
     }
     return {
       data: null,
+    };
+  }
+
+  /**
+   * 请求文章内容数据，用于文章详情内容展示
+   */
+  async selectArticleContent(params: ArticleContentType) {
+    const condition: { pre_id?: number; Id?: number } = {};
+    if (params.ParentId) {
+      if (typeof params.ParentId !== 'number') {
+        return { Code: -1 };
+      }
+      condition.pre_id = params.ParentId;
+    }
+    if (params.Id) {
+      if (typeof params.Id !== 'number') {
+        return { Code: -1 };
+      }
+      condition.Id = params.Id;
+    }
+    let data: any = null;
+    try {
+      data = await this.knex('article_content')
+        .select()
+        .where({ ...condition });
+    } catch (error) {
+      data = -1;
+    }
+    if (data === -1) {
+      return {
+        Code: -2,
+      };
+    }
+    return {
+      Code: 0,
+      Data: data,
     };
   }
 }

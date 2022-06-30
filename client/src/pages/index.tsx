@@ -3,31 +3,34 @@ import React, { useEffect } from 'react';
 import styles from './index.less';
 import Header from '@/layouts/Header';
 import 'tdesign-react/es/style/index.css';
-import { DescribeArticleList } from '@/api/article';
+import { DescribeArticleList, DescribeArtcleContent } from '@/api/article';
 
 function IndexPage(props) {
   const { userInfo, dispatch } = props;
 
   const getdata = async () => {
-    const result = await DescribeArticleList({
-      Filter: [
-        { Name: 'tag-parent', Values: ['前端'] },
-        { Name: 'tag-children', Values: ['webpack'] },
-        { Name: 'show_count', Values: ['12'] },
-      ],
-      Sort: [
-        {
-          Name: 'show_count',
-          Value: 'Desc',
-        },
-        {
-          Name: 'create_time',
-          Value: 'Desc',
-        },
-      ],
-    });
-    console.log('result:::', result);
-    result.Data;
+    const result = await DescribeArtcleContent();
+    console.log('result:::::::', result);
+
+    // const result = await DescribeArticleList({
+    //   Filter: [
+    //     { Name: 'tag-parent', Values: ['前端'] },
+    //     { Name: 'tag-children', Values: ['webpack'] },
+    //     { Name: 'show_count', Values: ['12'] },
+    //   ],
+    //   Sort: [
+    //     {
+    //       Name: 'show_count',
+    //       Value: 'Desc',
+    //     },
+    //     {
+    //       Name: 'create_time',
+    //       Value: 'Desc',
+    //     },
+    //   ],
+    // });
+    // console.log('result:::', result);
+    // result.Data;
   };
 
   useEffect(() => {

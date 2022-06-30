@@ -1,5 +1,10 @@
 import React from 'react';
+import MarkdownEditor from '@/components/MarkdownEditor';
 
 export default function AppNewsPage() {
-  return <div>AppNewsPage</div>;
+  return (
+    <div>
+      <MarkdownEditor />
+    </div>
+  );
 }

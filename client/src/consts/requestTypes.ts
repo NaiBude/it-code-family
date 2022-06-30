@@ -12,3 +12,8 @@ export interface AddUserDataType {
   password: string;
   job: string;
 }
+export interface ArtcleContentInter {
+  id: number;
+  pre_id: number;
+  content: string;
+}
