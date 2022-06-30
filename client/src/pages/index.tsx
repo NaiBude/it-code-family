@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import styles from './index.less';
 import Header from '@/layouts/Header';
 import 'tdesign-react/es/style/index.css';
-import Button from '@/components/SideBar/Button';
 import { DescribeArticleList } from '@/api/article';
 
 function IndexPage(props) {

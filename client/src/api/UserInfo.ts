@@ -19,7 +19,11 @@ export async function DescribeUserInfo(params = null) {
  * @param params
  * @returns
  */
-export async function VerifyUserInfo(params: { username?: string; password?: string }) {
+export async function VerifyUserInfo(params: {
+  username?: string;
+  password?: string;
+  job?: string;
+}) {
   const result = await request<null | UserInfoInter>({
     url: '/api/user/VerifyUserInfo',
     method: 'post',

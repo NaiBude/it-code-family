@@ -7,3 +7,8 @@ export interface ArticleListResposeType {
   article_title: string;
   collect: string;
 }
+export interface AddUserDataType {
+  username: string;
+  password: string;
+  job: string;
+}
