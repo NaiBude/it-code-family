@@ -1,17 +1,18 @@
 import { baseModel } from '../baseModel';
 
 interface InsterUserParamsType {
-  username: string;
-  password: string;
-  job: string;
+  username?: string;
+  password?: string;
+  job?: string;
 }
 
 class AddUserInfo extends baseModel {
-  async insterUserData(params: InsterUserParamsType) {
+  async insterUserData(params: InsterUserParamsType = {}) {
     if (params?.username && params?.password && params?.job) {
-      const data = await this.knex('user_public_info').inster();
+      const obj = { username: params.username, password: params.password };
+      const data = await this.knex('user_private_info').insert({ ...obj });
       return {
-        Data,
+        Data: data,
       };
     }
     return {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Button, MessagePlugin } from 'tdesign-react';
 import styles from './singIn.less';
 import LogoPhoto from '../../../../assets/logo.png';
-import { AddUserAvtar } from '@/api/AddUser';
+import { AddUserAvtar } from '@/api/userInfo';
 
 const { FormItem } = Form;
 export default function SingIn(props) {

@@ -1,6 +1,6 @@
 import { Effect } from 'umi';
 import { ModelType } from '@/consts/modelType';
-import { VerifyUserInfo } from '@/api/UserInfo';
+import { VerifyUserInfo } from '@/api/userInfo';
 
 interface StateType {
   userInfo: any;

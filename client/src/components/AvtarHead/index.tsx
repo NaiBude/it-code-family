@@ -7,7 +7,7 @@ import cookie from 'react-cookies';
 import OperaCardList from './OperaCardList';
 import DefaultAvtar from '../../../assets/defaultAvtar.png';
 import { UserInfoInter } from '@/consts/infoType';
-import { AcquireUserAvtar } from '@/api/UserInfo';
+import { AcquireUserAvtar } from '@/api/userInfo';
 import { AvtarCardListType } from '@/consts/variableType';
 
 type propType = {

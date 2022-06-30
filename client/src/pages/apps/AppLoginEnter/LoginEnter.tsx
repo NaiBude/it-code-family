@@ -3,7 +3,7 @@ import { Input, Button, message } from 'tdesign-react';
 import { LockOnIcon } from 'tdesign-icons-react';
 import './LoginEnter.less';
 import { useHistory, connect } from 'umi';
-import { VerifyUserInfo } from '@/api/UserInfo';
+import { VerifyUserInfo } from '@/api/userInfo';
 import { checkRegular } from '@/utils/regular';
 
 const LoginEnter = ({ dispatch, ...res }) => {
