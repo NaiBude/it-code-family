@@ -1,5 +1,8 @@
 import { checkInfoType } from '@/consts/utilTypes';
 
+/**
+ * 正则验证
+ */
 export const checkRegular = (() => {
   const rules = {
     username(str) {

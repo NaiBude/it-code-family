@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, MessagePlugin } from 'tdesign-react';
+import { Form, Input, Button, MessagePlugin, message } from 'tdesign-react';
 import styles from './singIn.less';
 import LogoPhoto from '../../../../assets/logo.png';
 import { AddUserAvtar } from '@/api/userInfo';
@@ -26,13 +26,20 @@ export default function SingIn(props) {
         password: inputPasswordValue,
         job: inputPreValue,
       });
+      console.log('result---------:::', result);
+      if (result.Code === 0) {
+        message.success({ content: result.Message });
+      } else {
+        message.error({ content: result.Message });
+      }
     };
-    if (validateResult === true) {
-      MessagePlugin.success('注册成功');
-    } else {
-      console.log('Errors: ', validateResult);
-      MessagePlugin.warning(firstError);
-    }
+
+    // if (validateResult === true) {
+    //   MessagePlugin.success('注册成功');
+    // } else {
+    //   console.log('Errors: ', validateResult);
+    //   MessagePlugin.warning(firstError);
+    // }
     regest();
   };
   return (
