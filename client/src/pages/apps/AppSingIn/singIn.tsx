@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, MessagePlugin, message, Select } from 'tdesign-react';
+import { Link, useHistory } from 'umi';
 import styles from './singIn.less';
 import LogoPhoto from '../../../../assets/logo.png';
 import { AddUserAvtar } from '@/api/userInfo';
@@ -12,7 +13,7 @@ export default function SingIn(props) {
   const [inputPasswordValue, setInputPasswordValue] = useState('');
   const [inputJobValue, setInputJobValue] = useState('');
   const [nickNameValue, setNickNameValue] = useState('');
-
+  const history = useHistory();
   const options = [
     { label: '后端开发', value: '0' },
     { label: 'Java', value: '1' },
@@ -50,6 +51,7 @@ export default function SingIn(props) {
       if (result.Code === 0) {
         if (nickNameValue !== '' && inputUserValue !== '' && inputPasswordValue !== '') {
           message.success({ content: result.Message });
+          history.push('/login');
         } else {
           message.error({ content: result.Message });
         }
@@ -96,7 +98,7 @@ export default function SingIn(props) {
           <h3>欢迎注册</h3>
           <p>
             <span>
-              已有账号？<a>登录</a>
+              已有账号？<Link to='login'>登录</Link>
             </span>
           </p>
         </div>
