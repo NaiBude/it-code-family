@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Input, Button, message } from 'tdesign-react';
 import { LockOnIcon } from 'tdesign-icons-react';
 import './LoginEnter.less';
-import { useHistory, connect } from 'umi';
+import { useHistory, connect, Link } from 'umi';
 import { VerifyUserInfo } from '@/api/userInfo';
 import { checkRegular } from '@/utils/regular';
 
@@ -61,7 +61,7 @@ const LoginEnter = ({ dispatch, ...res }) => {
         <div className='login_operation'>
           <div className='login_question'>
             <span>
-              没有账号?去<a>注册账号</a>
+              没有账号?去<Link to='/singin'>注册账号</Link>
             </span>
             <span>
               <a>忘记密码</a>

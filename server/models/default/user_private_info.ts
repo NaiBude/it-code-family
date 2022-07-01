@@ -28,6 +28,7 @@ class AddUserInfo extends baseModel {
         if (error?.code === 'ER_DUP_ENTRY') {
           message.Code = -3;
         }
+        this.knex('user_private_info').where('username', 'params.username').delete();
       }
     }
     return {
