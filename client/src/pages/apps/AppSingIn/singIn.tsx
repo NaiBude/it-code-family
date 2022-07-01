@@ -1,46 +1,86 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, MessagePlugin, message } from 'tdesign-react';
+import { Form, Input, Button, MessagePlugin, message, Select } from 'tdesign-react';
 import styles from './singIn.less';
 import LogoPhoto from '../../../../assets/logo.png';
 import { AddUserAvtar } from '@/api/userInfo';
+import { checkRegular } from '@/utils/regular';
 
 const { FormItem } = Form;
 export default function SingIn(props) {
   const form = React.createRef();
   const [inputUserValue, setInputUserValue] = useState('');
   const [inputPasswordValue, setInputPasswordValue] = useState('');
-  const [inputPreValue, setInputPreValue] = useState('');
+  const [inputJobValue, setInputJobValue] = useState('');
+  const [nickNameValue, setNickNameValue] = useState('');
+
+  const options = [
+    { label: '后端开发', value: '0' },
+    { label: 'Java', value: '1' },
+    { label: '测试工程师', value: '2' },
+    { label: 'web前端', value: '3' },
+    { label: '运维工程师', value: '4' },
+    { label: '项目管理', value: '5' },
+    { label: '算法工程师', value: '6' },
+    { label: '数据分析师', value: '7' },
+    { label: '网络工程师', value: '8' },
+  ];
+
   const ChangeUserHandler = evt => {
     setInputUserValue(evt);
   };
   const ChangePasswordHandler = evt => {
     setInputPasswordValue(evt);
   };
-  const ChangePreHandler = evt => {
-    setInputPreValue(evt);
+  const ChangeNicknameHandler = evt => {
+    setNickNameValue(evt);
   };
-  const onSubmit = ({ validateResult, firstError }) => {
+  const ChangeJobHandler = evt => {
+    setInputJobValue(options[evt].label);
+  };
+
+  const onSubmit = () => {
     const regest = async () => {
       const result = await AddUserAvtar({
+        nickname: nickNameValue,
         username: inputUserValue,
         password: inputPasswordValue,
-        job: inputPreValue,
+        job: inputJobValue,
       });
-      console.log('result---------:::', result);
+      console.log('SINGIN---------:::', result.Code);
       if (result.Code === 0) {
-        message.success({ content: result.Message });
+        if (nickNameValue !== '' && inputUserValue !== '' && inputPasswordValue !== '') {
+          message.success({ content: result.Message });
+        } else {
+          message.error({ content: result.Message });
+        }
       } else {
         message.error({ content: result.Message });
       }
     };
-
-    // if (validateResult === true) {
-    //   MessagePlugin.success('注册成功');
-    // } else {
-    //   console.log('Errors: ', validateResult);
-    //   MessagePlugin.warning(firstError);
-    // }
     regest();
+  };
+  const rules = {
+    nickname: [
+      {
+        required: true,
+        pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]{2,10}$/,
+        message: '昵称可以包括中文、英文、数字包括下划线',
+      },
+    ],
+    account: [
+      {
+        required: true,
+        pattern: /^[a-zA-Z0-9_-]{4,16}$/,
+        message: '用户名为4到16位字母数字_-组成',
+      },
+    ],
+    password: [
+      {
+        required: true,
+        pattern: /^[.@a-zA-Z0-9_-]{4,16}$/,
+        message: '密码为4到16位字母数字组成_-.@',
+      },
+    ],
   };
   return (
     <div className={styles.form}>
@@ -60,15 +100,24 @@ export default function SingIn(props) {
             </span>
           </p>
         </div>
-        <Form ref={form} statusIcon onSubmit={onSubmit} labelWidth={80}>
+        <Form ref={form} statusIcon onSubmit={onSubmit} labelWidth={80} rules={rules}>
+          <FormItem label={`昵称`} name='nickname'>
+            <Input onChange={ChangeNicknameHandler} />
+          </FormItem>
           <FormItem label={`用户名`} name='account'>
             <Input onChange={ChangeUserHandler} />
           </FormItem>
           <FormItem label={`密码`} name='password'>
             <Input onChange={ChangePasswordHandler} />
           </FormItem>
-          <FormItem label={`爱好`} name='description'>
-            <Input placeholder='一句话介绍自己' onChange={ChangePreHandler} />
+          <FormItem label='职位' name='job'>
+            {
+              <Select onChange={ChangeJobHandler}>
+                {options.map((item, index) => (
+                  <Select.Option value={item.value} label={item.label} key={item.value} />
+                ))}
+              </Select>
+            }
           </FormItem>
 
           <FormItem>
@@ -88,7 +137,4 @@ export default function SingIn(props) {
       </div>
     </div>
   );
-}
-function AddUser() {
-  throw new Error('Function not implemented.');
 }

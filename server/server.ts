@@ -10,5 +10,3 @@ const server = http.createServer(app.callback());
 webSocket({ server });
 
 server.listen(PORT);
-
-console.log(`App starting successfully at : localhost:${PORT}`);

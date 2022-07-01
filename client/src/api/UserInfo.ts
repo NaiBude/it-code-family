@@ -21,6 +21,7 @@ export async function DescribeUserInfo(params = null) {
  * @returns
  */
 export async function VerifyUserInfo(params: {
+  nickname?: string;
   username?: string;
   password?: string;
   job?: string;

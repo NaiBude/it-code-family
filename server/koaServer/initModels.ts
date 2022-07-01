@@ -16,7 +16,6 @@ const initModels = function () {
     debug: true,
     log: { ...dataLog },
   });
-  console.log('aaaaaaaaaa');
 
   return sql;
 };

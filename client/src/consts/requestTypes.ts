@@ -14,6 +14,7 @@ export interface ArtcleContentInter {
   content: string;
 }
 export interface AddUserDataType {
+  nickname: string;
   username: string;
   password: string;
   job: string;

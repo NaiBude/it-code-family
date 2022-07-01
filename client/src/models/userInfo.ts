@@ -1,4 +1,3 @@
-import { Effect } from 'umi';
 import { ModelType } from '@/consts/modelType';
 import { VerifyUserInfo } from '@/api/userInfo';
 

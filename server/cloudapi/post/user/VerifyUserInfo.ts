@@ -55,7 +55,6 @@ export = async function (ctx: ctxInter, next: nextInter) {
         const cookies = item.replace('=', ':').split(':');
         return [...cookies];
       });
-    console.log('tokenList', tokenList);
     let accessToken = '';
     const tokenCurrent = tokenList.find(item => item[0] === 'ACCESSTOKEN');
     if (tokenCurrent?.length) {
@@ -64,9 +63,6 @@ export = async function (ctx: ctxInter, next: nextInter) {
     const tokenInfoList = Decryption(accessToken).split('/');
     const endTimeStamp = Number(tokenInfoList[0]) + Number(tokenInfoList[1]);
     const nowTimeStamp = Number(new Date());
-    console.log(tokenInfoList);
-
-    console.log(endTimeStamp, nowTimeStamp);
 
     if (nowTimeStamp < endTimeStamp) {
       if (tokenInfoList[2]) {

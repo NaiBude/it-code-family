@@ -24,7 +24,7 @@ export default defineConfig({
   request: {
     dataField: 'data',
   },
-  theme: {
-    '@primary-color': '#047e1c',
-  },
+  // theme: {
+  //   '@primary-color': '#047e1c',
+  // },
 });
