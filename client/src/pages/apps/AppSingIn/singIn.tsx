@@ -127,7 +127,7 @@ export default function SingIn(props) {
               style={{
                 borderRadius: 25,
                 height: 50,
-                backgroundColor: '#047e1c',
+                backgroundColor: '#5d5fef',
               }}
             >
               注册
