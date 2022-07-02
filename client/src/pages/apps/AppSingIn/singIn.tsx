@@ -4,7 +4,6 @@ import { Link, useHistory } from 'umi';
 import styles from './singIn.less';
 import LogoPhoto from '../../../../assets/logo.png';
 import { AddUserAvtar } from '@/api/userInfo';
-import { checkRegular } from '@/utils/regular';
 
 const { FormItem } = Form;
 export default function SingIn(props) {
@@ -47,7 +46,6 @@ export default function SingIn(props) {
         password: inputPasswordValue,
         job: inputJobValue,
       });
-      console.log('SINGIN---------:::', result.Code);
       if (result.Code === 0) {
         if (nickNameValue !== '' && inputUserValue !== '' && inputPasswordValue !== '') {
           message.success({ content: result.Message });
@@ -63,22 +61,22 @@ export default function SingIn(props) {
   };
   const rules = {
     nickname: [
+      { required: true },
       {
-        required: true,
         pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]{2,10}$/,
         message: '昵称可以包括中文、英文、数字包括下划线',
       },
     ],
     account: [
+      { required: true },
       {
-        required: true,
         pattern: /^[a-zA-Z0-9_-]{4,16}$/,
         message: '用户名为4到16位字母数字_-组成',
       },
     ],
     password: [
+      { required: true },
       {
-        required: true,
         pattern: /^[.@a-zA-Z0-9_-]{4,16}$/,
         message: '密码为4到16位字母数字组成_-.@',
       },
@@ -110,7 +108,7 @@ export default function SingIn(props) {
             <Input onChange={ChangeUserHandler} />
           </FormItem>
           <FormItem label={`密码`} name='password'>
-            <Input onChange={ChangePasswordHandler} />
+            <Input onChange={ChangePasswordHandler} type='password' />
           </FormItem>
           <FormItem label='职位' name='job'>
             {
