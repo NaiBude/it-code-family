@@ -222,6 +222,7 @@ module.exports = {
     'react/jsx-boolean-value': ['warn', 'never', { always: ['personal'] }], // 在给组件传boolean属性时，boolean可以直接省略
     'react/jsx-closing-bracket-location': ['warn', 'line-aligned'], // 验证 JSX 中的右括号位置
     'react/jsx-key': 'error', // 报告迭代器/集合文本中缺少的属性key
+    'react/no-unknown-property': 'warn',
   },
   parserOptions: {
     ecmaVersion: 2018,

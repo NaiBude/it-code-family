@@ -23,7 +23,7 @@ export default function AppIndexPage(props: WithoRouterPropsInter) {
   }, []);
 
   return (
-    <div>
+    <>
       <div className={styles.tabbar}>
         <TabList />
         <div className={styles.tabr_li}>
@@ -50,6 +50,6 @@ export default function AppIndexPage(props: WithoRouterPropsInter) {
         </div>
       </div>
       <div className={styles.context}>{props.children}</div>
-    </div>
+    </>
   );
 }
