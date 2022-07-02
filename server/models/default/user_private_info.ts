@@ -19,6 +19,9 @@ class AddUserInfo extends baseModel {
           message.Code = -2;
         }
       }
+      if (message.Code === -2) {
+        return message;
+      }
       try {
         await this.knex('user_public_info').insert({
           username: params?.username,
@@ -28,7 +31,7 @@ class AddUserInfo extends baseModel {
         if (error?.code === 'ER_DUP_ENTRY') {
           message.Code = -3;
         }
-        this.knex('user_private_info').where('username', 'params.username').delete();
+        await this.knex('user_private_info').where('username', params.username).delete();
       }
     }
     return {
