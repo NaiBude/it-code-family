@@ -107,70 +107,73 @@ export default props => {
       }, timeOut);
     }
   };
+  const ChangetabListStatusH = () => {
+    // setTabStatus(false);
 
-  useEffect(() => {
-    return () => {
-      if (ref.current) {
-        clearTimeout(ref.current);
-      }
-    };
-  }, []);
+    useEffect(() => {
+      return () => {
+        if (ref.current) {
+          clearTimeout(ref.current);
+        }
+      };
+    }, []);
 
-  return (
-    <div className={styles.tab_list}>
-      <div className={styles.tab_parent}>
-        <ul className={styles.tab_parent_lsit}>
-          {optionsP.map(item => (
-            <li
-              key={item.id}
-              className={status === item.id ? styles.active : ''}
-              onClick={() => {
-                changeStatus(item.id);
-              }}
-              onMouseOver={() => changetabStatusVisible(item.id)}
-              onMouseLeave={() => changetabStatusHidden()}
-            >
-              <a>{item.content}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div
-        className={styles.tab_child}
-        onMouseOver={e => {
-          if (!subDownStatus) {
-            setSubTagStatus(true);
-            setSubDownStatus(true);
-            ref.current = null;
-          }
-        }}
-        onMouseLeave={() => {
-          changetabStatusHidden();
-        }}
-        // ref={tagSubRef}
-      >
-        <div
-          className={styles.sub_visiable}
-          style={{
-            height: `${subTagStatus ? tagSubHeight : 0}`,
-            transition: `all ${timeOut / 1000}s`,
-          }}
-        >
-          <ul
-            ref={dom => {
-              if (tagSubHeight === 'auto' && dom?.clientHeight) {
-                setTagSubHeight(`${dom.clientHeight}px`);
-              }
-            }}
-          >
-            {optionChild.map(item => (
-              <li key={item.id}>
+    return (
+      <div className={styles.tab_list}>
+        <div className={styles.tab_parent}>
+          <ul className={styles.tab_parent_lsit}>
+            {optionsP.map(item => (
+              <li
+                key={item.id}
+                className={status === item.id ? styles.active : ''}
+                onClick={() => {
+                  changeStatus(item.id);
+                }}
+                onMouseOver={() => changetabStatusVisible(item.id)}
+                onMouseLeave={() => changetabStatusHidden()}
+              >
                 <a>{item.content}</a>
               </li>
             ))}
           </ul>
         </div>
+        <div
+          className={styles.tab_child}
+          onMouseOver={e => {
+            if (!subDownStatus) {
+              setSubTagStatus(true);
+              setSubDownStatus(true);
+              ref.current = null;
+            }
+          }}
+          onMouseLeave={() => {
+            changetabStatusHidden();
+          }}
+          // ref={tagSubRef}
+        >
+          <div
+            className={styles.sub_visiable}
+            style={{
+              height: `${subTagStatus ? tagSubHeight : 0}`,
+              transition: `all ${timeOut / 1000}s`,
+            }}
+          >
+            <ul
+              ref={dom => {
+                if (tagSubHeight === 'auto' && dom?.clientHeight) {
+                  setTagSubHeight(`${dom.clientHeight}px`);
+                }
+              }}
+            >
+              {optionChild.map(item => (
+                <li key={item.id}>
+                  <a>{item.content}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 };
