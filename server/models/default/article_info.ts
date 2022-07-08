@@ -4,7 +4,16 @@ import { baseModel } from '../baseModel';
 interface FindDataParamsType {
   username: string;
 }
-
+interface FindArticleDataParamsType {
+  id?: number;
+  username?: string;
+  article_title?: string;
+  sign?: string;
+  tag?: string;
+  praise?: number;
+  show_count?: number;
+  comment_count?: number;
+}
 type ArticleInfoParamsType = {
   PageNumber: number;
   PageSize: number;
@@ -121,6 +130,16 @@ class ArticleInfo extends baseModel {
     return {
       Code: 0,
       Data: data,
+    };
+  }
+
+  /**
+   * 请求文章内容数据
+   */
+  async findArticleData(params: FindDataParamsType) {
+    const data = await this.knex('article_info').select();
+    return {
+      data,
     };
   }
 }

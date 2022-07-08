@@ -1,37 +1,46 @@
 .tab_list {
   position: relative;
   width: 100%;
-  height: 40px;
+  height: 42px;
   margin: 0;
   margin-top: 20px;
   padding: 0;
 
   .tab_parent {
     width: 1000px;
-    height: 40px;
+    height: 42px;
     margin: 0 auto;
     border-radius: 12px;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.12);
 
     .tab_parent_lsit {
       width: 1000px;
-      height: 40px;
+      height: 42px;
       padding: 0 10px;
       line-height: 40px;
 
       li {
         display: inline-block;
+        height: 42px;
         padding: 0 20px;
         list-style: none;
         cursor: pointer;
 
         a {
+          display: inline-block;
           color: #666;
+          font-size: 12px;
+
+          &:hover {
+            color: #5d5fef;
+          }
         }
       }
 
       .active {
-        color: #5d5fef;
+        a {
+          border-bottom: 2px solid #5d5fef;
+        }
       }
     }
   }
@@ -53,9 +62,14 @@
 
       li {
         padding: 15px 22px 0;
+        line-height: 20px;
 
         &:last-child {
           margin-bottom: 15px;
+        }
+
+        a {
+          font-size: 12px;
         }
       }
     }

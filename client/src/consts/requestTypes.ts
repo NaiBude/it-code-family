@@ -19,3 +19,15 @@ export interface AddUserDataType {
   password: string;
   job: string;
 }
+export interface SelectArticleDataType {
+  data: {
+    id: number;
+    username: string;
+    article_title: string;
+    sign: string;
+    tag: string;
+    praise: number;
+    show_count: number;
+    comment_count: number;
+  };
+}

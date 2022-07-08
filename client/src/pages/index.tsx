@@ -9,9 +9,8 @@ function IndexPage(props) {
   const { userInfo, dispatch } = props;
 
   const getdata = async () => {
-    const result = await DescribeArtcleContent();
-    console.log('result:::::::', result);
-
+    // const result = await DescribeArtcleContent();
+    // console.log('result:::::::', result);
     // const result = await DescribeArticleList({
     //   Filter: [
     //     { Name: 'tag-parent', Values: ['前端'] },

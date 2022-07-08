@@ -1,66 +1,50 @@
-import React from 'react';
-import { IconFont } from 'tdesign-icons-react';
-import { List, Comment } from 'tdesign-react';
+import React, { useEffect, useState } from 'react';
+import * as moment from 'moment';
+import CardList from '@/components/CradList/CardList';
+import { selectArticle } from '@/api/article';
 
 export default function Recommend() {
-  const actionTextStyle = {
-    display: 'inline-block',
-    marginLeft: '6px',
-    lineHeight: '15px',
-  };
-  const actions = [
-    <span key='browse'>
-      <IconFont name='browse' />
-      <span style={actionTextStyle}>999</span>
-    </span>,
-    <span key='thumbUp'>
-      <IconFont name='thumb-up' />
-      <span style={actionTextStyle}>999</span>
-    </span>,
-    <span key='chat'>
-      <IconFont name='chat' />
-      <span style={actionTextStyle}>999</span>
-    </span>,
-  ];
-  const commentsData = [
-    {
-      id: 'A',
-      avatar: 'https://tdesign.gtimg.com/list-icon.png',
-      author: '标题1',
-      datetime: '今天13:38',
-      content: '详细内容',
-      actions,
-    },
-    {
-      id: 'B',
-      avatar: 'https://tdesign.gtimg.com/list-icon.png',
-      author: '标题2',
-      datetime: '今天14:38',
-      content: '详细内容',
-      actions,
-    },
-    {
-      id: 'C',
-      avatar: 'https://tdesign.gtimg.com/list-icon.png',
-      author: '标题3',
-      datetime: '今天15:30',
-      content: '详细内容',
-      actions,
-    },
-  ];
+  const [articleData, setArticleData] = useState([]);
+  useEffect(() => {
+    const getArticle = async () => {
+      const data = await selectArticle();
+      const newData = [...data.Data.data];
+      newData.forEach((item, index, arr) => {
+        const reg = /[<\u4e00-\u9fa5>]/g;
+        const regday = /[A-Z:.]/g;
+        const str = item.tag
+          .split('/')
+          .join('')
+          .replace(reg, '')
+          .split('-')
+          .filter(m => {
+            return m && m.trim();
+          })
+          .slice(0, 3)
+          .join('-');
+        const day_Y = item.create_time.replace(regday, '-').split('-').slice(0, 3).join('-');
+        const day_H = item.create_time.replace(regday, '-').split('-').slice(3, 6).join(':');
+        const time = `${day_Y} ${day_H}`;
+        const dtime = moment(item.create_time, 'YYYY-MM-DD HH:mm:ss')
+          .locale('zh-cn')
+          .fromNow()
+          .split('')
+          .filter(m => {
+            return m && m.trim();
+          })
+          .join('');
+        item.create_time = time;
+        item.dtime = dtime;
+        item.tag = str;
+      });
+      setArticleData(newData);
+    };
+    getArticle();
+  }, []);
 
   return (
-    <List>
-      {commentsData.map((item, index) => (
-        <List.ListItem key={item.id}>
-          <Comment
-            author={item.author}
-            datetime={item.datetime}
-            content={item.content}
-            actions={actions}
-          />
-        </List.ListItem>
-      ))}
-    </List>
+    <div>
+      <CardList data={articleData} />
+    </div>
   );
 }

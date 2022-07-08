@@ -1,37 +1,59 @@
 import React from 'react';
-import { IconFont } from 'tdesign-icons-react';
+import { BrowseIcon, ThumbUpIcon, ChatIcon } from 'tdesign-icons-react';
 import styles from './index.less';
 
 const Card = (props: { data: any }) => {
-  // console.log(props);
-
   const { data } = props;
+
   return (
     <>
-      {data.map((item: any) => (
-        <div key={item.id} className={styles.box}>
-          <div className={styles.header}>
-            <span>{item.theme}</span>
+      {data.map(item => (
+        <div className={styles.cardlist} key={item.id}>
+          <div className={styles.cardlist_theme}>
+            <h2>{item.article_title}</h2>
           </div>
-          <div className={styles.left}>
-            <img src={item.url} alt={item.id} />
-          </div>
-          <div className={styles.right}>
-            <div className={styles.footer}>
-              <span>
-                <IconFont name='browse' size='1.7em' />
-                {item.browse}
-              </span>
-              <span>
-                <IconFont name='chat' size='1.7em' />
-                {item.chat}
-              </span>
-              <span>
-                <IconFont name='thumb-up' size='1.7em' />
-                {item.thumb}
-              </span>
+          <div className={styles.cardlist_main}>
+            <div className={styles.cardlist_content}>
+              <a className={styles.cardlist_a}>{item.sign}</a>
+              <div className={styles.cardlist_icon}>
+                <div className={styles.icon_text}>
+                  <ul>
+                    <li>
+                      <a style={{ color: '#333', fontWeight: 500 }}>{item.username}</a>
+                      <span style={{ marginLeft: 10, color: '#e4e6eb' }}>|</span>
+                    </li>
+                    <li>
+                      <a>{item.dtime}</a>
+                      <span style={{ marginLeft: 10, color: '#e4e6eb' }}>|</span>
+                    </li>
+                    <li>
+                      <a>{item.tag}</a>
+                    </li>
+                  </ul>
+                </div>
+                <div className={styles.icon_icon}>
+                  <ul>
+                    <li>
+                      <BrowseIcon />
+                      <span>{item.show_count}</span>
+                    </li>
+                    <li>
+                      <a>
+                        <ThumbUpIcon />
+                        <span>{item.praise}</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <ChatIcon />
+                        <span>{item.comment_count}</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <p>{item.context}</p>
+            <div className={styles.cardlist_img}></div>
           </div>
         </div>
       ))}
