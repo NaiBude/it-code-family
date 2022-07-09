@@ -1,6 +1,7 @@
 import { ctxInter, nextInter } from '@/interface/koa';
 import { getAvtarUrl } from '@/utils/cosOperate';
 import { MessageInter } from '@/interface/message';
+import ErrMassage from '@/error';
 
 export = async function (ctx: ctxInter, next: nextInter) {
   const { query } = ctx;
@@ -15,17 +16,11 @@ export = async function (ctx: ctxInter, next: nextInter) {
     const result = await getAvtarUrl(key);
 
     if (result.Url) {
-      message.Data = result;
-    } else {
-      message.Code = -1;
-      message.Message = '获取头像失败';
+      return {
+        Data: result,
+      };
     }
-  } else {
-    message.Code = -1;
-    message.Message = '获取头像失败';
+    throw ErrMassage.NotPhotoResourse();
   }
-
-  return {
-    ...message,
-  };
+  throw ErrMassage.NotPhotoResourse();
 };

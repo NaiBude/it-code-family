@@ -1,6 +1,9 @@
+import moment from 'moment';
 import React from 'react';
 import { BrowseIcon, ThumbUpIcon, ChatIcon } from 'tdesign-icons-react';
 import styles from './index.less';
+
+const reg = /[<\u4e00-\u9fa5>]/g;
 
 const Card = (props: { data: any }) => {
   const { data } = props;
@@ -23,11 +26,23 @@ const Card = (props: { data: any }) => {
                       <span style={{ marginLeft: 10, color: '#e4e6eb' }}>|</span>
                     </li>
                     <li>
-                      <a>{item.dtime}</a>
+                      <a>
+                        {moment(item.create_time).locale('zh-cn').fromNow().split(' ').join('')}
+                      </a>
                       <span style={{ marginLeft: 10, color: '#e4e6eb' }}>|</span>
                     </li>
                     <li>
-                      <a>{item.tag}</a>
+                      <a>
+                        {item.tag
+                          .split('/')
+                          .join('')
+                          .replace(reg, '')
+                          .split('-')
+                          .filter(m => {
+                            return m && m.trim();
+                          })
+                          .slice(0, 3)}
+                      </a>
                     </li>
                   </ul>
                 </div>

@@ -11,7 +11,7 @@ const handleCloudApiPath = (method: string, parPath: string, path: string): void
         async (ctx, next) => {
           const res = await api(ctx, next);
           if (res) {
-            ctx.body = res;
+            ctx.body = { Code: 0, Message: 'success', ...res };
             next();
           }
         },

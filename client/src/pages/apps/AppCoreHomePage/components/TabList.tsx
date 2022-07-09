@@ -8,32 +8,47 @@ const timeOut = 200;
 
 export default props => {
   const [status, setStatus] = useState(0);
-  const [optionsP, setOptionsP] = useState([]);
+  const [optionsP, setOptionsP] = useState<{ id: number; content: string }[]>([]);
   const [optionChild, setOptionChild] = useState([]);
   const [subTagStatus, setSubTagStatus] = useState(false); // 控制子类下拉显示与隐藏
   const [historyTagHover, setHistoryTagHover] = useState(-1); // 在更改hoverTag之前记录它的状态，以此项请求子类tag
   const [hoverTag, setHoverTag] = useState(-1); // 记录父类实时hover状态
   const [selectBoxOver, setSelectBoxOver] = useState(false); // 子类下拉框是否有重新打开，用于监听此项请求数据
   const [subDownStatus, setSubDownStatus] = useState(false); // 从子类下拉框移出后是否还出与回退状态
-  const [tagSubHeight, setTagSubHeight] = useState('auto'); // 动态计算子类下拉框的值
+  const [tagSubHeight, setTagSubHeight] = useState(0); // 动态计算子类下拉框的值
+  const [tagChildCachet, setTagChildCachet] = useState({});
   const ref = useRef(null); // 获取setTimeout实例
   const tagRef = useRef({ id: null, tagStatus: false }); // tagStatus 深度保存父类hover状态 id 深度保存id，以便回调是使用
+  const preRef = useRef(null);
+
   useEffect(() => {
     const getTagP = async () => {
       const result = await SelectTagParent();
-
-      // setOptionsP(result.Data.Data)
+      setOptionsP(result.Data);
     };
     getTagP();
   }, []);
+
+  const getTagChild = async (target: number) => {
+    const result = await SelectTagChild({ belong: target });
+    if (result.Code === 0) {
+      setTagChildCachet({ ...tagChildCachet, [`${target}`]: result.Data });
+      setOptionChild(result.Data);
+    }
+  };
+
   useEffect(() => {
-    const getTagC = async () => {
-      const result = await SelectTagChild({ belong: historyTagHover });
-      console.log('eeeeee', result);
-      // serOptionChild(data.Data.Data)
-    };
-    getTagC();
-  }, []);
+    console.log('tagChildCachet', tagChildCachet);
+  }, [tagChildCachet]);
+
+  // useEffect(() => {
+  //   const getTagC = async () => {
+  //     const result = await SelectTagChild({ belong: historyTagHover });
+  //     console.log('eeeeee', result);
+  //     // serOptionChild(data.Data.Data)
+  //   };
+  //   getTagC();
+  // }, []);
 
   const changeStatus = index => {
     setStatus(index);
@@ -41,7 +56,13 @@ export default props => {
 
   useEffect(() => {
     if (subTagStatus && hoverTag !== -1) {
+      // console.log(hoverTag, historyTagHover);
       //此处执请求tagChildren逻辑
+      if (!tagChildCachet[`${hoverTag}`]) {
+        getTagChild(hoverTag);
+      } else if (tagChildCachet[`${hoverTag}`]) {
+        setOptionChild(tagChildCachet[`${hoverTag}`]);
+      }
     }
   }, [selectBoxOver]);
 
@@ -61,6 +82,13 @@ export default props => {
     // 深度保存id，以便回调是使用
     tagRef.current.id = id;
   };
+
+  const subTagChooseAciton = () => {
+    //子项选择·逻辑
+    setSubTagStatus(false);
+    changeStatus(historyTagHover);
+  };
+
   const changetabStatusHidden = () => {
     // 在更改hoverTag之前记录它的状态
     setHistoryTagHover(hoverTag);
@@ -69,6 +97,8 @@ export default props => {
     setSubTagStatus(false);
     // 清除深度保存的id
     tagRef.current.id = null;
+    console.log('preRef', preRef.current?.clientHeight, tagSubHeight);
+    const time = (preRef.current?.clientHeight / tagSubHeight) * timeOut;
     // 在定时器不存在引用的时候可以执行定时器
     if (!ref.current) {
       ref.current = setTimeout(() => {
@@ -87,7 +117,7 @@ export default props => {
         }
         // 清除定时引用
         ref.current = null;
-      }, timeOut);
+      }, time);
     }
   };
 
@@ -133,21 +163,22 @@ export default props => {
       >
         <div
           className={styles.sub_visiable}
+          ref={preRef}
           style={{
-            height: `${subTagStatus ? tagSubHeight : 0}`,
+            height: `${subTagStatus ? `${tagSubHeight}px` : 0}`,
             transition: `all ${timeOut / 1000}s`,
           }}
         >
           <ul
             ref={dom => {
-              if (tagSubHeight === 'auto' && dom?.clientHeight) {
-                setTagSubHeight(`${dom.clientHeight}px`);
+              if (tagSubHeight === 0 && dom?.clientHeight) {
+                setTagSubHeight(dom.clientHeight);
               }
             }}
           >
             {optionChild.map(item => (
               <li key={item.id}>
-                <a>{item.content}</a>
+                <a onClick={subTagChooseAciton}>{item.content}</a>
               </li>
             ))}
           </ul>

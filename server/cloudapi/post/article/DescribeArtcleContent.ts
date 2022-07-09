@@ -11,7 +11,7 @@ export = async function (ctx: ctxInter, next: nextInter) {
 
   if (result.Code === -2) {
     return {
-      Code: 0,
+      Code: -1,
       Message: '未知错误',
       Data: null,
     };
@@ -19,7 +19,7 @@ export = async function (ctx: ctxInter, next: nextInter) {
 
   if (result.Code === -1) {
     return {
-      Code: 0,
+      Code: -1,
       Message: '参数错误',
       Data: null,
     };

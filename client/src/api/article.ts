@@ -3,14 +3,14 @@ import {
   ArticleListResposeType,
   ArtcleContentInter,
   SelectArticleDataType,
+  TagChildResponseType,
+  ArticleListParamsInter,
 } from '@/consts/requestTypes';
 
 /**
- * 用于查询用户数据信息
- * @param params
- * @returns
+ * 用于文章列表数据查询
  */
-export async function DescribeArticleList(params = null) {
+export async function DescribeArticleList(params: ArticleListParamsInter = {}) {
   const result = await request<ArticleListResposeType[]>({
     url: '/api/article/DescribeArticleList',
     method: 'post',
@@ -33,7 +33,7 @@ export async function DescribeArtcleContent(params: { ParentId?: number; Id?: nu
  * 请求父类标签
  */
 export async function SelectTagParent(params = null) {
-  const result = await request<{ id: number; content: string }>({
+  const result = await request<{ id: number; content: string }[]>({
     url: '/api/article/SelectTagParent',
     method: 'post',
     data: params,
@@ -44,7 +44,7 @@ export async function SelectTagParent(params = null) {
  * 请求子类标签
  */
 export async function SelectTagChild(params: { belong?: number }) {
-  const result = await request<{}>({
+  const result = await request<TagChildResponseType[]>({
     url: '/api/article/SelectTagChild',
     method: 'post',
     data: params,

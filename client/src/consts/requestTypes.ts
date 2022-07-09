@@ -6,8 +6,35 @@ export interface ResponseType<T> {
 export interface ArticleListResposeType {
   article_title: string;
   collect: string;
+  id: number;
+  username: string;
+  sign: string;
+  tag: string;
+  praise: number;
+  show_count: number;
+  comment_count: number;
+  create_time: string;
+  update_time: string;
 }
-
+export interface ArticleListParamsInter {
+  Filter?: {
+    Name:
+      | 'article_title'
+      | 'collect'
+      | 'id'
+      | 'username'
+      | 'sign'
+      | 'praise'
+      | 'show_count'
+      | 'comment_count'
+      | 'tag_parent'
+      | 'tag_children';
+    Values: string[] | number[];
+  }[];
+  Sort?: { Name: 'collect' | 'id' | 'praise' | 'show_count' | 'comment_count'; Value: string }[];
+  PageNumber?: number;
+  PageSize?: number;
+}
 export interface ArtcleContentInter {
   id: number;
   pre_id: number;
@@ -30,4 +57,12 @@ export interface SelectArticleDataType {
     show_count: number;
     comment_count: number;
   };
+}
+export interface TagChildResponseType {
+  id: number;
+  belong: number;
+  content: string;
+  article_count: number;
+  read_count: number;
+  click_count: number;
 }

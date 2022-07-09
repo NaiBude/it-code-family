@@ -35,13 +35,13 @@ class ArticleInfo extends baseModel {
       sql.where(builder => {
         Filter.forEach(item => {
           if (Array.isArray(item.Values)) {
-            if (item.Name === 'tag-parent') {
+            if (item.Name === 'tag_parent') {
               if (item.Values && Array.isArray(item.Values)) {
                 item.Values.forEach(val => {
                   builder.andWhereLike('tag', `%<${val}>%`);
                 });
               }
-            } else if (item.Name === 'tag-children') {
+            } else if (item.Name === 'tag_children') {
               item.Values.forEach(val => {
                 builder.andWhereLike('tag', `%-${val}-%`);
               });
