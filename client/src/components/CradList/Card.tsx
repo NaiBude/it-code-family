@@ -1,17 +1,25 @@
 import moment from 'moment';
 import React from 'react';
 import { BrowseIcon, ThumbUpIcon, ChatIcon } from 'tdesign-icons-react';
+import { useLocation } from 'umi';
 import styles from './index.less';
 
 const reg = /[<\u4e00-\u9fa5>]/g;
 
 const Card = (props: { data: any }) => {
   const { data } = props;
+  // const location = useLocation();
 
   return (
     <>
       {data.map(item => (
-        <div className={styles.cardlist} key={item.id}>
+        <div
+          className={styles.cardlist}
+          key={item.id}
+          onClick={() => {
+            location.href = `${location.origin}/article?id=23479479295`;
+          }}
+        >
           <div className={styles.cardlist_theme}>
             <h2>{item.article_title}</h2>
           </div>
@@ -46,7 +54,12 @@ const Card = (props: { data: any }) => {
                     </li>
                   </ul>
                 </div>
-                <div className={styles.icon_icon}>
+                <div
+                  className={styles.icon_icon}
+                  onClick={e => {
+                    e.stopPropagation();
+                  }}
+                >
                   <ul>
                     <li>
                       <BrowseIcon />
