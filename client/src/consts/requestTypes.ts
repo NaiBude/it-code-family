@@ -7,8 +7,10 @@ export interface ArticleListResposeType {
   article_title: string;
   collect: string;
   id: number;
+  user_id: number;
   username: string;
   sign: string;
+  read: number;
   tag: string;
   praise: number;
   show_count: number;

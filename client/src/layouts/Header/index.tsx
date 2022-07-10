@@ -129,7 +129,12 @@ function Header(props: HeaderProps) {
         <div className={styles.message_dymanic}>
           <p>动态</p>
         </div>
-        <div className={styles.creation_station}>
+        <div
+          className={styles.creation_station}
+          onClick={() => {
+            location.href = `${location.origin}/creater`;
+          }}
+        >
           <span>创作空间站</span>
         </div>
       </div>

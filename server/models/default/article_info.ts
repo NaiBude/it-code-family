@@ -46,7 +46,7 @@ class ArticleInfo extends baseModel {
                 builder.andWhereLike('tag', `%-${val}-%`);
               });
             } else {
-              builder.whereIn(item.Name, [...item.Values]);
+              builder.whereIn(`article_info.${[item.Name]}`, [...item.Values]);
             }
           }
         });
@@ -68,8 +68,32 @@ class ArticleInfo extends baseModel {
     try {
       data = await sql
         .join('user_public_info', 'article_info.username', '=', 'user_public_info.username')
-        .select();
+        .select(
+          'article_info.id',
+          'user_public_info.id as user_id',
+          'user_public_info.username',
+          'article_title',
+          'sign',
+          'tag',
+          'article_info.photo_key',
+          'show_count',
+          'praise',
+          'collect',
+          'comment_count',
+          'create_time',
+          'update_time',
+          'nickname',
+          'sex',
+          'heat_value',
+          'fans',
+          'visit',
+          'concern',
+          'article_info.read',
+          'register_time',
+        );
     } catch (error) {
+      console.log('error', error);
+
       return {
         Code: -1,
         Message: '请求错误(参数错误｜数据请求错误)',

@@ -71,6 +71,6 @@ function IndexPage(props) {
     </div>
   );
 }
-export default connect(userInfo => {
-  return userInfo.userInfo;
+export default connect(({ userInfo }) => {
+  return userInfo;
 })(IndexPage);

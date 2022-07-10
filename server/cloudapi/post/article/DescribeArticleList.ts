@@ -9,6 +9,8 @@ export = async function (ctx: ctxInter, next: nextInter) {
 
   const result = await dataModel.selectData({ Filter, Sort, PageNumber, PageSize });
 
+  console.log('result', result);
+
   if (result.Code === -1) {
     return {
       ...result,
