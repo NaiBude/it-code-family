@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, Suspense } from 'react';
 import styles from './tabList.less';
 // import { isParent } from '@/utils/tools';
 import { WithoRouterPropsInter } from '@/consts/propsTypes';
-import { SelectTagChild, SelectTagParent } from '@/api/article';
+import { DescribeArticleList, SelectTagChild, SelectTagParent } from '@/api/article';
 
 const timeOut = 200;
 

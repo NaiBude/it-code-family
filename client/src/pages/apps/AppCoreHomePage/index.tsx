@@ -5,10 +5,29 @@ import styles from './index.less';
 import TabList from './components/TabList';
 import DropDown from './components/DropDown/DropDown';
 import { WithoRouterPropsInter } from '@/consts/propsTypes';
+import { DescribeArticleList } from '@/api/article';
 
 export default function AppIndexPage(props: WithoRouterPropsInter) {
   const { location } = props;
   const [routerState, setRouterState] = useState(0);
+  const [articleData, setArticleData] = useState([]);
+
+  useEffect(() => {
+    const getArticle = async () => {
+      const result = await DescribeArticleList({
+        Filter: [
+          {
+            Name: 'tag_parent',
+            Values: ['ios'],
+          },
+        ],
+      });
+      const newData = [...result.Data];
+      setArticleData(newData);
+      console.log('111111', newData);
+    };
+    getArticle();
+  }, []);
   if (location.pathname === '/index' || location.pathname === '/index/') {
     return <Redirect to='/index/recommend' />;
   }
@@ -26,7 +45,7 @@ export default function AppIndexPage(props: WithoRouterPropsInter) {
   return (
     <>
       <div className={styles.tabbar}>
-        <TabList />
+        <TabList data={articleData} />
         <div className={styles.list}>
           <div className={styles.list_tab}>
             <ul>

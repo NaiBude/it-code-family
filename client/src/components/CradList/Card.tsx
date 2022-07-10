@@ -1,5 +1,5 @@
 import moment from 'moment';
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowseIcon, ThumbUpIcon, ChatIcon } from 'tdesign-icons-react';
 import { useLocation } from 'umi';
 import styles from './index.less';
@@ -7,9 +7,12 @@ import styles from './index.less';
 const reg = /[<\u4e00-\u9fa5>]/g;
 
 const Card = (props: { data: any }) => {
+  const [status, setStatus] = useState(false);
   const { data } = props;
   // const location = useLocation();
-
+  const changeStatus = () => {
+    setStatus(!status);
+  };
   return (
     <>
       {data.map(item => (
@@ -27,7 +30,12 @@ const Card = (props: { data: any }) => {
             <div className={styles.cardlist_content}>
               <a className={styles.cardlist_a}>{item.sign}</a>
               <div className={styles.cardlist_icon}>
-                <div className={styles.icon_text}>
+                <div
+                  className={styles.icon_text}
+                  onClick={e => {
+                    e.stopPropagation();
+                  }}
+                >
                   <ul>
                     <li>
                       <a style={{ color: '#333', fontWeight: 500 }}>{item.username}</a>
@@ -66,7 +74,7 @@ const Card = (props: { data: any }) => {
                       <span>{item.show_count}</span>
                     </li>
                     <li>
-                      <a>
+                      <a onClick={changeStatus} className={status ? styles.active : ''}>
                         <ThumbUpIcon />
                         <span>{item.praise}</span>
                       </a>
