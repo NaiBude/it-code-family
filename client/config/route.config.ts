@@ -16,7 +16,7 @@ const routes: routerConfig[] = [
     path: '/singin',
     component: '@/pages/apps/AppSingIn/singIn', //注册页面
   },
-  // { path: '/creater' },
+  { path: '/creater', component: '@/pages/apps/AppCreaterCenter' },
   { path: '/', exact: true, redirect: '/home' }, //重定向主页
   {
     path: '/',

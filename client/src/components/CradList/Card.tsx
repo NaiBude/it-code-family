@@ -8,6 +8,8 @@ const reg = /[<\u4e00-\u9fa5>]/g;
 
 const Card = (props: { data: any }) => {
   const { data } = props;
+  console.log('data', data);
+
   // const location = useLocation();
 
   return (

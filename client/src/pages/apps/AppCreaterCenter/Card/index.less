@@ -1,0 +1,63 @@
+.card_detail {
+  position: relative;
+  height: 80px;
+  margin: 10px 10px 0;
+  padding-right: 30px;
+  color: #333;
+  background-color: #f4f4f4;
+  border-radius: 12px;
+  cursor: pointer;
+
+  &:hover {
+    & > div {
+      &:first-child {
+        color: #5d5fef;
+      }
+    }
+  }
+
+  & > div {
+    padding: 10px 0 0 10px;
+
+    &:first-child {
+      font-size: 14px;
+    }
+
+    &:nth-child(2) {
+      color: #666;
+
+      span {
+        display: inline-block;
+        height: 12px;
+        padding: 0 10px;
+        line-height: 12px;
+        border-right: 1px solid #888;
+      }
+
+      & > span:first-child {
+        padding-left: 0;
+      }
+
+      & > span:last-child {
+        border-right: none;
+      }
+    }
+
+    &:last-child {
+      position: absolute;
+      top: 20px;
+      right: 10px;
+      width: 24px;
+      height: 20px;
+      font-size: 20px;
+      background-color: #ddd;
+      border-radius: 4px;
+
+      span {
+        position: absolute;
+        top: -10px;
+        left: 5px;
+      }
+    }
+  }
+}
