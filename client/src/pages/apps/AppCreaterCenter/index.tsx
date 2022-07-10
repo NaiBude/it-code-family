@@ -107,6 +107,7 @@ const CreaterCenter = props => {
               <ul>
                 {tabList.map(item => (
                   <li
+                    {...(tabStatus === item.id ? { className: styles.active } : '')}
                     key={item.id}
                     onClick={() => {
                       setTabStatus(item.id);

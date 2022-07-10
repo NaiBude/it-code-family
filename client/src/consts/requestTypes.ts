@@ -11,6 +11,7 @@ export interface ArticleListResposeType {
   username: string;
   sign: string;
   read: number;
+  url: string | null;
   tag: string;
   praise: number;
   show_count: number;

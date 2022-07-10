@@ -24,6 +24,13 @@ export default defineConfig({
   request: {
     dataField: 'data',
   },
+  alias: {
+    // '#/*': './src/*',
+    // a: './src/pages/*',
+    // '@assets': './assets/*',
+    // config: './config/*',
+    // foo: 'src',
+  },
   // theme: {
   //   '@primary-color': '#047e1c',
   // },

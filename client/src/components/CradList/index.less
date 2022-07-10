@@ -31,9 +31,6 @@
         width: 600px;
         height: 40px;
         overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
       }
 
       span {
@@ -89,8 +86,15 @@
     .cardlist_img {
       width: 256px;
       height: 105px;
+      overflow: hidden;
       background-color: #5d5fef;
-      border-radius: 9px;
+      border: 1px solid #5d5fef;
+      border-radius: 12px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

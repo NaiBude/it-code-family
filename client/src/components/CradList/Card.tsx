@@ -91,7 +91,7 @@ const Card = (props: { data: any }) => {
                 </div>
               </div>
             </div>
-            <div className={styles.cardlist_img}></div>
+            <div className={styles.cardlist_img}>{Boolean(item.url) && <img src={item.url} />}</div>
           </div>
         </div>
       ))}

@@ -8,6 +8,8 @@ import { DescribeArticleList, DescribeArtcleContent } from '@/api/article';
 function IndexPage(props) {
   const { userInfo, dispatch } = props;
 
+  const Com = props.Children;
+
   const getdata = async () => {
     // const result = await DescribeArtcleContent();
     // console.log('result:::::::', result);
