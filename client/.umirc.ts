@@ -1,3 +1,4 @@
+import path from 'path';
 import { defineConfig } from 'umi';
 import { routes } from './config/route.config';
 
@@ -12,7 +13,7 @@ export default defineConfig({
   fastRefresh: {},
   dva: {
     immer: true,
-    hmr: false,
+    hmr: true,
   },
   proxy: {
     '/api': {
@@ -25,11 +26,8 @@ export default defineConfig({
     dataField: 'data',
   },
   alias: {
-    // '#/*': './src/*',
-    // a: './src/pages/*',
-    // '@assets': './assets/*',
-    // config: './config/*',
-    // foo: 'src',
+    '@assets': path.resolve(__dirname, './assets'),
+    '@config': path.resolve(__dirname, './config'),
   },
   // theme: {
   //   '@primary-color': '#047e1c',

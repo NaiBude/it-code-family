@@ -14,7 +14,7 @@ import { DescribeArticleList } from '@/api/article';
 const tabList = [
   { id: 1, content: '我的文章', component: MyArticles },
   { id: 2, content: '文章创作', component: ArticleEditor },
-  { id: 3, content: '文章审核', component: ArticleAudit },
+  { id: 3, content: '审核进度', component: ArticleAudit },
   { id: 4, content: '阅读文章', component: ArticleAudit },
 ];
 

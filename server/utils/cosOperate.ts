@@ -12,6 +12,7 @@ export const getAvtarUrl: GetAvtarUrlInter = key => {
         Region: 'ap-guangzhou' /* 必须 */,
         Key: key,
         Sign: true,
+        Expires: 60,
       },
       function (err, data) {
         if (err) {
@@ -23,7 +24,7 @@ export const getAvtarUrl: GetAvtarUrlInter = key => {
     );
   })
     .then((data: string) => {
-      console.log('data', data);
+      // console.log('data', data);
 
       return data;
     })

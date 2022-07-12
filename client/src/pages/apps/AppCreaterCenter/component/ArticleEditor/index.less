@@ -1,4 +1,42 @@
 .article_editor {
-  width: 100%;
-  height: 100%;
+  background-color: white;
+
+  .art_header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #5d5fef;
+
+    .opera_btn {
+      display: flex;
+      justify-content: space-evenly;
+      width: 260px;
+      padding: 5px 0;
+
+      button {
+        height: 30px;
+        background-color: #5d5fef;
+        border-color: #5d5fef;
+      }
+
+      & > div {
+        &:last-child {
+          margin-top: 8px;
+        }
+      }
+    }
+
+    .scrn {
+      margin-top: 8px;
+      margin-right: 10px;
+      cursor: pointer;
+
+      &:hover {
+        svg {
+          path {
+            fill: #5d5fef !important;
+          }
+        }
+      }
+    }
+  }
 }

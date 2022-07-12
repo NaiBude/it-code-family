@@ -1,15 +1,13 @@
-// import a from 'assert/other.svg';
-import React from 'react';
+import React, { useState } from 'react';
+import Other from '@assets/other.svg';
+import OtherHover from '@assets/other_hover.svg';
+
 import moment from 'moment';
-// import Other from 'assets/other.svg';
-// import other from
-// import {} from '';
-// import a from ''
 import styles from './index.less';
-// import Other from '../../../../../assets/other.svg';
 import { ArticleListResposeType } from '@/consts/requestTypes';
 
 export default function Card(props: { data: ArticleListResposeType }) {
+  const [hoverStatus, setHoverStatus] = useState(false);
   const { data } = props;
   return (
     <div className={styles.card_detail}>
@@ -23,7 +21,18 @@ export default function Card(props: { data: ArticleListResposeType }) {
         <span>{data.collect}点赞</span>
         <span>{data.comment_count}评论</span>
       </div>
-      <div>{/* <img src={Other} alt='' /> */}</div>
+      <div>
+        <img
+          onMouseEnter={() => {
+            setHoverStatus(true);
+          }}
+          onMouseLeave={() => {
+            setHoverStatus(false);
+          }}
+          src={hoverStatus ? OtherHover : Other}
+          alt=''
+        />
+      </div>
     </div>
   );
 }
