@@ -11,23 +11,33 @@ export default function AppIndexPage(props: WithoRouterPropsInter) {
   const { location } = props;
   const [routerState, setRouterState] = useState(0);
   const [articleData, setArticleData] = useState([]);
+  const [articleP, setArticleP] = useState('');
+  const [articleC, setArticleC] = useState('');
 
   useEffect(() => {
     const getArticle = async () => {
+      console.log(articleP);
+      const FilterCondition = [];
+      if (articleP) {
+        FilterCondition.push({
+          Name: 'tag_parent',
+          Values: [articleP],
+        });
+      }
+      if (articleC) {
+        FilterCondition.push({
+          Name: 'tag_children',
+          Values: [articleC],
+        });
+      }
       const result = await DescribeArticleList({
-        Filter: [
-          {
-            Name: 'tag_parent',
-            Values: ['ios'],
-          },
-        ],
+        Filter: [...FilterCondition],
       });
-      const newData = [...result.Data];
-      setArticleData(newData);
-      console.log('111111', newData);
+      setArticleData(result.Data);
+      // console.log('111111', result.Data);
     };
     getArticle();
-  }, []);
+  }, [articleP, articleC]);
   if (location.pathname === '/index' || location.pathname === '/index/') {
     return <Redirect to='/index/recommend' />;
   }
@@ -42,10 +52,21 @@ export default function AppIndexPage(props: WithoRouterPropsInter) {
     const tab = routerList.find(item => location.pathname === item.path);
     setRouterState(tab?.id);
   }, []);
+  const handlechange = content => {
+    if (content === '综合') {
+      setArticleP(' ');
+    } else {
+      setArticleP(content);
+    }
+  };
+  const handlechangeC = content => {
+    setArticleC(content);
+  };
+  // console.log(articleP);
   return (
     <>
       <div className={styles.tabbar}>
-        <TabList data={articleData} />
+        <TabList getArticleP={handlechange} getArticleC={handlechangeC} />
         <div className={styles.list}>
           <div className={styles.list_tab}>
             <ul>
@@ -70,7 +91,13 @@ export default function AppIndexPage(props: WithoRouterPropsInter) {
               <li>{routerState === 2 ? <DropDown /> : ''}</li>
             </ul>
           </div>
-          <div className={styles.list_context}>{props.children}</div>
+          <div className={styles.list_context}>
+            {React.Children.map(props.children, child => {
+              return React.cloneElement(child, {
+                data: articleData,
+              });
+            })}
+          </div>
         </div>
       </div>
     </>

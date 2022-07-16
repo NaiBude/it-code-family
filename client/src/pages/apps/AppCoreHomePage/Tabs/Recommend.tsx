@@ -5,27 +5,15 @@ import { connect, useHistory, useLocation } from 'umi';
 import CardList from '@/components/CradList/CardList';
 import { DescribeArticleList } from '@/api/article';
 
-function Recommend({ dispatch, ...res }) {
-  const [articleData, setArticleData] = useState([]);
+function Recommend(props) {
   const location = useLocation();
   const { query } = location as unknown as { query: string };
 
-  useEffect(() => {
-    const getArticle = async () => {
-      const result = await DescribeArticleList({
-        // Filter: [
-        //   {
-        //     Name: 'tag_children',
-        //     Values: ['html'],
-        //   },
-        // ],
-      });
-      const newData = [...result.Data];
-      setArticleData(newData);
-    };
-    getArticle();
-  }, []);
-
-  return <div>{/* <CardList data={articleData} /> */}</div>;
+  return (
+    <div>
+      {' '}
+      <CardList data={props.data} />
+    </div>
+  );
 }
 export default Recommend;

@@ -6,7 +6,7 @@ import { getGlobalModel } from '@/koaServer/getGlobalModel';
 export = async (ctx: ctxInter, next: nextInter) => {
   const params = ctx.request.body;
   const dataModel: ArticleInfo = getGlobalModel('default', 'article_info');
-  const result = await dataModel.findArticleData({ ...params });
+  const result = await dataModel.SelectArticleData({ ...params });
   const message: MessageInter<any> = {
     Code: 0,
     Data: result,

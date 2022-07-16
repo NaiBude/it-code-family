@@ -4,6 +4,9 @@ import { baseModel } from '../baseModel';
 interface FindDataParamsType {
   username: string;
 }
+interface SelectArticleParamsType {
+  id: number;
+}
 interface FindArticleDataParamsType {
   id?: number;
   username?: string;
@@ -166,5 +169,13 @@ class ArticleInfo extends baseModel {
       data,
     };
   }
+
+  async SelectArticleData(params: SelectArticleParamsType) {
+    const data = await this.knex('article_info').select().where(params);
+    return {
+      data,
+    };
+  }
 }
+
 export = ArticleInfo;

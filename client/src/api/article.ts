@@ -54,8 +54,8 @@ export async function SelectTagChild(params: { belong?: number }) {
 /**
  * 请求文章内容数据
  */
-export async function selectArticle(params = null) {
-  const result = await request<null>({
+export async function selectArticle(params: { id: number }) {
+  const result = await request<ArticleListResposeType[]>({
     url: '/api/article/selectArticle',
     method: 'post',
     data: params,

@@ -1,7 +1,7 @@
 import moment from 'moment';
 import React, { useState } from 'react';
 import { BrowseIcon, ThumbUpIcon, ChatIcon } from 'tdesign-icons-react';
-import { useLocation } from 'umi';
+import { Link, useLocation } from 'umi';
 import styles from './index.less';
 
 const reg = /[<\u4e00-\u9fa5>]/g;
@@ -9,7 +9,9 @@ const reg = /[<\u4e00-\u9fa5>]/g;
 const Card = (props: { data: any }) => {
   const [status, setStatus] = useState(false);
   const { data } = props;
-  console.log('data', data);
+  console.log(data);
+
+  // console.log('data', data);
 
   // const location = useLocation();
   const changeStatus = () => {
@@ -21,16 +23,20 @@ const Card = (props: { data: any }) => {
         <div
           className={styles.cardlist}
           key={item.id}
-          onClick={() => {
-            location.href = `${location.origin}/article?id=23479479295`;
-          }}
+          // onClick={() => {
+          //   // console.log(item.id);
+
+          //   location.href = `${location.origin}/article?id=${item.id}`;
+          // }}
         >
           <div className={styles.cardlist_theme}>
             <h2>{item.article_title}</h2>
           </div>
           <div className={styles.cardlist_main}>
             <div className={styles.cardlist_content}>
-              <a className={styles.cardlist_a}>{item.sign}</a>
+              <Link target='_blank' className={styles.cardlist_a} to={`/article?id=${item.id}`}>
+                {item.sign}
+              </Link>
               <div className={styles.cardlist_icon}>
                 <div
                   className={styles.icon_text}
@@ -59,7 +65,8 @@ const Card = (props: { data: any }) => {
                           .filter(m => {
                             return m && m.trim();
                           })
-                          .slice(0, 3)}
+                          .slice(0, 3)
+                          .join('-')}
                       </a>
                     </li>
                   </ul>

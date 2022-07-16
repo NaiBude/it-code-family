@@ -43,9 +43,9 @@ const routes: routerConfig[] = [
       { path: '/plug', component: '@/pages/apps/AppPlugPage' },
       {
         path: 'article',
-        component: '@/pages/apps/AppArticleContentShow',
+        component: '@/pages/apps/AppArticleContentShow/index',
       },
-      { component: '@/pages/NotFound', redirect: '/home' },
+      // { component: '@/pages/NotFound', redirect: '/home' },
     ],
   },
 ];

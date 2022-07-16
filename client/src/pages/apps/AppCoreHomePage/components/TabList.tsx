@@ -36,19 +36,14 @@ export default props => {
       setOptionChild(result.Data);
     }
   };
-
   useEffect(() => {
-    console.log('tagChildCachet', tagChildCachet);
+    if (optionsP.length) {
+      setStatus(optionsP[0].id);
+    }
+  }, [optionsP]);
+  useEffect(() => {
+    // console.log('tagChildCachet', tagChildCachet);
   }, [tagChildCachet]);
-
-  // useEffect(() => {
-  //   const getTagC = async () => {
-  //     const result = await SelectTagChild({ belong: historyTagHover });
-  //     console.log('eeeeee', result);
-  //     // serOptionChild(data.Data.Data)
-  //   };
-  //   getTagC();
-  // }, []);
 
   const changeStatus = index => {
     setStatus(index);
@@ -97,7 +92,7 @@ export default props => {
     setSubTagStatus(false);
     // 清除深度保存的id
     tagRef.current.id = null;
-    console.log('preRef', preRef.current?.clientHeight, tagSubHeight);
+    // console.log('preRef', preRef.current?.clientHeight, tagSubHeight);
     const time = (preRef.current?.clientHeight / tagSubHeight) * timeOut;
     // 在定时器不存在引用的时候可以执行定时器
     if (!ref.current) {
@@ -138,6 +133,7 @@ export default props => {
               className={status === item.id ? styles.active : ''}
               onClick={() => {
                 changeStatus(item.id);
+                props.getArticleP(item.content);
               }}
               onMouseOver={() => changetabStatusVisible(item.id)}
               onMouseLeave={() => changetabStatusHidden()}
@@ -178,7 +174,14 @@ export default props => {
           >
             {optionChild.map(item => (
               <li key={item.id}>
-                <a onClick={subTagChooseAciton}>{item.content}</a>
+                <a
+                  onClick={() => {
+                    subTagChooseAciton;
+                    props.getArticleC(item.content);
+                  }}
+                >
+                  {item.content}
+                </a>
               </li>
             ))}
           </ul>
