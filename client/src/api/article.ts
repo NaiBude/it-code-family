@@ -5,6 +5,7 @@ import {
   SelectArticleDataType,
   TagChildResponseType,
   ArticleListParamsInter,
+  AddDraftInfoDataParams,
 } from '@/consts/requestTypes';
 
 /**
@@ -57,6 +58,14 @@ export async function SelectTagChild(params: { belong?: number }) {
 export async function selectArticle(params: { id: number }) {
   const result = await request<ArticleListResposeType[]>({
     url: '/api/article/selectArticle',
+    method: 'post',
+    data: params,
+  });
+  return { ...result };
+}
+export async function AddDraftInfoData(params: AddDraftInfoDataParams) {
+  const result = await request<null>({
+    url: '/api/article/AddDraftInfoData',
     method: 'post',
     data: params,
   });

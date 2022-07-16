@@ -6,14 +6,10 @@ import { getGlobalModel } from '@/koaServer/getGlobalModel';
 export = async (ctx: ctxInter, next: nextInter) => {
   const params = ctx.request.body;
   const dataModel: SelectTag = getGlobalModel('default', 'tag_parent_class');
-  const data = await dataModel.selectTagData({ ...params });
-  const message: MessageInter<any> = {
-    Code: 0,
-    Data: data,
-    Message: '获取父类标签成功',
-  };
+  const result = await dataModel.selectTagData({ ...params });
 
   return {
-    ...message,
+    Data: result.Data,
+    Message: '获取父类标签成功',
   };
 };

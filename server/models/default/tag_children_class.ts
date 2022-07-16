@@ -12,7 +12,7 @@ class SelectChildTag extends baseModel {
       const data = await this.knex('tag_children_class')
         .select()
         .where({ ...params });
-      return data;
+      return { Data: data };
     }
 
     return {

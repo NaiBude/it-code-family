@@ -6,6 +6,7 @@ import TabList from './components/TabList';
 import DropDown from './components/DropDown/DropDown';
 import { WithoRouterPropsInter } from '@/consts/propsTypes';
 import { DescribeArticleList } from '@/api/article';
+import { ArticleListResposeType } from '@/consts/requestTypes';
 
 export default function AppIndexPage(props: WithoRouterPropsInter) {
   const { location } = props;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'umi';
+import { Dialog } from 'tdesign-react';
 import styles from './header.less';
 import LogoPhoto from '../../../assets/logo.png';
 import AvtarHead from '@/components/AvtarHead';
@@ -24,6 +25,7 @@ function Header(props: HeaderProps) {
   const [tabbarSearchStatus, setTabbarSearchStatus] = useState(false);
   const [tabbarStatus, setTabbarStatus] = useState(0);
   const [articelStatus, setArticelStatus] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (props.location?.pathname) {
@@ -132,12 +134,27 @@ function Header(props: HeaderProps) {
         <div
           className={styles.creation_station}
           onClick={() => {
-            location.href = `${location.origin}/creater`;
+            if (props.userInfo.username) {
+              location.href = `${location.origin}/creater`;
+            } else {
+              setVisible(true);
+            }
           }}
         >
           <span>创作空间站</span>
         </div>
       </div>
+      <Dialog
+        header='进入创作空间需要登录，确认登录吗？'
+        visible={visible}
+        onClose={() => {
+          setVisible(false);
+        }}
+        onConfirm={() => {
+          location.href = `${location.origin}/login`;
+        }}
+      ></Dialog>
+      ;
     </div>
   );
 }

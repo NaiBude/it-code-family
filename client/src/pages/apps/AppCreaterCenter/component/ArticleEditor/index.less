@@ -1,4 +1,5 @@
 .article_editor {
+  height: 100%;
   background-color: white;
 
   .art_header {
@@ -9,7 +10,7 @@
     .opera_btn {
       display: flex;
       justify-content: space-evenly;
-      width: 260px;
+      width: 360px;
       padding: 5px 0;
 
       button {
@@ -37,6 +38,58 @@
           }
         }
       }
+    }
+  }
+
+  .art_content {
+    width: 100%;
+    height: calc(100% - 41px);
+    overflow: hidden;
+
+    .editor_box {
+      :global {
+        .button-wrap {
+          i {
+            color: rgba(93, 95, 239, 0.6);
+
+            &:hover {
+              color: #5d5fef;
+            }
+          }
+        }
+      }
+    }
+
+    .editor_html {
+      height: auto;
+    }
+
+    .editor_opera {
+      height: auto;
+    }
+  }
+}
+
+.artcle_editor {
+  :global {
+    .t-dialog__body {
+      .t-input--focused {
+        border-color: #5d5fef;
+      }
+    }
+
+    .t-dialog__footer {
+      .t-button--theme-primary {
+        background-color: #5d5fef;
+        border-color: #5d5fef;
+      }
+    }
+  }
+
+  .tag_choose {
+    & > p {
+      margin-top: 10px;
+      margin-bottom: 4px;
     }
   }
 }

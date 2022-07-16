@@ -24,3 +24,9 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+:global {
+  .t-button--variant-base.t-button--theme-primary:not(.t-is-disabled):not(.t-button--ghost) {
+    --ripple-color: #4a36ff !important;
+  }
+}

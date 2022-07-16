@@ -28,6 +28,8 @@ const UserInfo: ModelType<StateType> = {
           payload: result.Data,
         });
         localStorage.setItem('userInfo', JSON.stringify(result.Data));
+      } else {
+        location.href = `${location.origin}/login`;
       }
     },
   },

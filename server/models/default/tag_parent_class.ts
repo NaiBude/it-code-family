@@ -7,9 +7,9 @@ interface FindTagParamsType {
 }
 
 class SelectTag extends baseModel {
-  async selectTagData(params: FindTagParamsType) {
+  async selectTagData(params: FindTagParamsType = {}) {
     const data = await this.knex('tag_parent_class').select();
-    return data;
+    return { Data: data };
   }
 }
 export = SelectTag;

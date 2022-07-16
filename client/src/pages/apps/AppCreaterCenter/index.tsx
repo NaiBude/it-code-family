@@ -14,8 +14,9 @@ import { DescribeArticleList } from '@/api/article';
 const tabList = [
   { id: 1, content: '我的文章', component: MyArticles },
   { id: 2, content: '文章创作', component: ArticleEditor },
-  { id: 3, content: '审核进度', component: ArticleAudit },
-  { id: 4, content: '阅读文章', component: ArticleAudit },
+  { id: 4, content: '草稿箱', component: ArticleAudit },
+  { id: 5, content: '审核进度', component: ArticleAudit },
+  { id: 6, content: '阅读文章', component: ArticleAudit },
 ];
 
 const infoList = [
@@ -37,6 +38,14 @@ const CreaterCenter = props => {
   const [userInfo, setUserInfo] = useState<UserInfoInter>({
     ...JSON.parse(localStorage.getItem('userInfo')),
   });
+
+  useEffect(() => {
+    console.log('userInfo', userInfo);
+
+    // if (!userInfo.username) {
+    //   location.href = `${location.origin}/login`;
+    // }
+  }, [userInfo]);
 
   useEffect(() => {
     setUserInfo(props.userInfo);

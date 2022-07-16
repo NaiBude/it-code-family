@@ -69,3 +69,11 @@ export interface TagChildResponseType {
   read_count: number;
   click_count: number;
 }
+export interface AddDraftInfoDataParams {
+  title: string;
+  sign: string;
+  tag_parent: string;
+  tag_children: string[];
+  content: string[];
+  username: string;
+}

@@ -3,6 +3,7 @@ import styles from './tabList.less';
 // import { isParent } from '@/utils/tools';
 import { WithoRouterPropsInter } from '@/consts/propsTypes';
 import { DescribeArticleList, SelectTagChild, SelectTagParent } from '@/api/article';
+import { ArticleListResposeType } from '@/consts/requestTypes';
 
 const timeOut = 200;
 
