@@ -13,3 +13,14 @@ export interface UserInfoInter {
   hobby?: string;
   register_time?: string;
 }
+export interface DraftInfoDataResponseType {
+  id: number;
+  username: string;
+  article_title: string;
+  sign: string;
+  tag: string;
+  photo_key: string;
+  word: number;
+  create_time: string;
+  update_time: string;
+}

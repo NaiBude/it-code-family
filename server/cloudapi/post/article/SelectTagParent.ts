@@ -4,9 +4,8 @@ import SelectTag from '@/models/default/tag_parent_class';
 import { getGlobalModel } from '@/koaServer/getGlobalModel';
 
 export = async (ctx: ctxInter, next: nextInter) => {
-  const params = ctx.request.body;
   const dataModel: SelectTag = getGlobalModel('default', 'tag_parent_class');
-  const result = await dataModel.selectTagData({ ...params });
+  const result = await dataModel.selectTagData();
 
   return {
     Data: result.Data,

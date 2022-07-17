@@ -154,7 +154,6 @@ function Header(props: HeaderProps) {
           location.href = `${location.origin}/login`;
         }}
       ></Dialog>
-      ;
     </div>
   );
 }

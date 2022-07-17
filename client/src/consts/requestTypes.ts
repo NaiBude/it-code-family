@@ -76,4 +76,5 @@ export interface AddDraftInfoDataParams {
   tag_children: string[];
   content: string[];
   username: string;
+  word: number;
 }

@@ -6,7 +6,7 @@ import OtherHover from '@assets/other_hover.svg';
 import Markdown from 'markdown-it';
 import styles from './index.less';
 import MarkdownEditor from '@/components/MarkdownEditor';
-import { AddDraftInfoData } from '@/api/article';
+import { AddDraftInfoData, SelectTagParent, SelectTagChild, AddAuditInfoData } from '@/api/article';
 import UserInfo from '@/models/userInfo';
 
 const { Option } = Select;
@@ -22,15 +22,7 @@ const options1 = [
     value: '6',
   },
 ];
-
-const options2 = [
-  { label: '云服务器', value: '1' },
-  { label: '云数据库', value: '2' },
-  { label: '域名注册', value: '3' },
-  { label: '网站备案', value: '4' },
-  { label: '对象存储', value: '5' },
-  { label: '低代码平台', value: '6' },
-];
+type OptionType = { label: string; value: number };
 
 export default function ArticleEditor(props: any) {
   const [hoverStatus, setHoverStatus] = useState(false);
@@ -40,9 +32,109 @@ export default function ArticleEditor(props: any) {
   const [visible, setVisible] = useState(false);
   const [titleText, setTitleText] = useState<InputValue>('');
   const [signText, setSignText] = useState<InputValue>('');
-  const [parentTag, setParentTag] = useState('');
+  const [parentTag, setParentTag] = useState(0);
   const [subTag, setSubTag] = useState([]);
+  const [parentTagList, setParentTagList] = useState<OptionType[]>([]);
+  const [childrenTagList, setChildrenTagList] = useState<OptionType[]>([]);
   const Scrn = scrnStatus ? FullscreenExitIcon : FullscreenIcon;
+
+  useEffect(() => {
+    const parentTagAction = async () => {
+      const result = await SelectTagParent();
+      if (result.Code === 0) {
+        setParentTagList(result.Data.map(item => ({ label: item.content, value: item.id })));
+      } else {
+        message.error({ content: result.Message });
+      }
+    };
+    parentTagAction();
+  }, []);
+
+  useEffect(() => {
+    if (parentTag !== 0) {
+      setSubTag([]);
+      const getChildrenTagList = async () => {
+        const result = await SelectTagChild({ belong: parentTag });
+        if (result.Code === 0) {
+          setChildrenTagList(result.Data.map(item => ({ label: item.content, value: item.id })));
+        } else {
+          message.error({ content: result.Message });
+        }
+      };
+      getChildrenTagList();
+    }
+  }, [parentTag]);
+
+  const saveDraftAction = async () => {
+    if (editorValue.length === 0) {
+      message.warning({ content: '请先输入内容在保存草稿' });
+    } else if (titleText === '' || signText === '' || parentTag === 0 || subTag.length === 0) {
+      message.warning('保存草稿前请完成文章信息编辑');
+    } else {
+      const list = [];
+      let record = 0;
+      while (record < editorValue.length - 1) {
+        if (record > editorValue.length - 5001) {
+          list.push(editorValue.slice(record, editorValue.length - 1));
+        } else {
+          list.push(editorValue.slice(record, record + 5000));
+        }
+        record += 5000;
+      }
+      console.log('list', list, editorValue);
+
+      const result = await AddDraftInfoData({
+        content: [...list],
+        username: props.userInfo.username,
+        tag_children: subTag.map(item => childrenTagList.find(el => el.value === item).label),
+        tag_parent: parentTagList.find(item => item.value === parentTag).label,
+        title: titleText as string,
+        sign: signText as string,
+        word: editorValue.length,
+      });
+      if (result.Code === 0) {
+        message.success({ content: '保存草稿成功' });
+      } else {
+        message.error({ content: '保存草稿失败，联系客服' });
+      }
+    }
+  };
+
+  const saveArticeInfo = async () => {
+    if (editorValue.length === 0) {
+      message.warning({ content: '请先输入内容再发布文章' });
+    } else if (titleText === '' || signText === '' || parentTag === 0 || subTag.length === 0) {
+      message.warning('发布文章前请完成文章信息编辑');
+    } else {
+      const list = [];
+      let record = 0;
+      while (record < editorValue.length - 1) {
+        if (record > editorValue.length - 5001) {
+          list.push(editorValue.slice(record, editorValue.length - 1));
+        } else {
+          list.push(editorValue.slice(record, record + 5000));
+        }
+        record += 5000;
+      }
+      console.log('list', list, editorValue);
+
+      const result = await AddAuditInfoData({
+        content: [...list],
+        username: props.userInfo.username,
+        tag_children: subTag.map(item => childrenTagList.find(el => el.value === item).label),
+        tag_parent: parentTagList.find(item => item.value === parentTag).label,
+        title: titleText as string,
+        sign: signText as string,
+        word: editorValue.length,
+      });
+      if (result.Code === 0) {
+        message.success({ content: '发布成功，请等待审核' });
+      } else {
+        message.error({ content: '发布失败，请联系客服' });
+      }
+    }
+  };
+
   return (
     <div
       style={
@@ -54,46 +146,8 @@ export default function ArticleEditor(props: any) {
     >
       <div className={styles.art_header}>
         <div className={styles.opera_btn}>
-          <Button
-            onClick={async () => {
-              if (titleText === '||signText === ' || parentTag === '' || subTag.length === 0) {
-                message.warning('完成创作前请完成文章信息编辑');
-              } else {
-                const list = [];
-                let record = 0;
-                while (record < editorValue.length - 1) {
-                  if (record > editorValue.length - 5001) {
-                    list.push(editorValue.slice(record, editorValue.length - 1));
-                  } else {
-                    list.push(editorValue.slice(record, record + 5000));
-                  }
-                  record += 5000;
-                }
-                console.log('list', list, editorValue);
-
-                const result = await AddDraftInfoData({
-                  content: [...list],
-                  username: props.userInfo.username,
-                  tag_children: subTag,
-                  tag_parent: parentTag,
-                  title: titleText as string,
-                  sign: signText as string,
-                });
-                console.log(result, result);
-              }
-            }}
-          >
-            完成
-          </Button>
-          <Button
-            onClick={() => {
-              if (editorValue.length === 0) {
-                message.warning({ content: '请先输入内容在保存草稿' });
-              }
-            }}
-          >
-            保存草稿
-          </Button>
+          <Button onClick={saveArticeInfo}>发布</Button>
+          <Button onClick={saveDraftAction}>保存草稿</Button>
           <Button
             onClick={() => {
               setVisible(true);
@@ -126,22 +180,29 @@ export default function ArticleEditor(props: any) {
       <div className={styles.art_content}>
         <MarkdownEditor
           value={editorValue}
+          onImageUpload={file => {
+            return new Promise((resolve, reject) => {
+              resolve(
+                'https://itfamilycode-1308254816.cos.ap-guangzhou.myqcloud.com/avtar_test/user123.png?q-sign-algorithm=sha1&q-ak=AKID3vXsynLcePcYEenfGbfSyECtJTN0NTJs&q-sign-time=1658074772;1658074832&q-key-time=1658074772;1658074832&q-header-list=host&q-url-param-list=&q-signature=c03816688b895625a84472b5fe8244ec4c528653',
+              );
+            });
+          }}
           className={styles.editor_box}
-          htmlClass={styles.editor_html}
           markdownClass={styles.editor_opera}
           onChange={({ html, text }, e) => {
             setEditorValue(text);
             setEditorHtml(html);
           }}
+          syncScrollMode={['leftFollowRight', 'rightFollowLeft']}
           renderHTML={(text: string) => mdParser.render(text)}
           placeholder={'开始创作吧...'}
-          view={{ html: false, md: true, menu: false }}
+          view={{ html: true, md: true, menu: true }}
           canView={{
             fullScreen: false,
-            menu: false,
-            html: false,
-            both: true,
+            menu: true,
+            html: true,
             md: true,
+            both: true,
             hideMenu: true,
           }}
           // renderHTML={editorHtml}
@@ -150,6 +211,9 @@ export default function ArticleEditor(props: any) {
       <Dialog
         className={styles.artcle_editor}
         header='选择文章分类'
+        onConfirm={() => {
+          setVisible(false);
+        }}
         visible={visible}
         onClose={() => {
           setVisible(false);
@@ -164,25 +228,27 @@ export default function ArticleEditor(props: any) {
           <Select
             value={parentTag}
             onChange={value => {
-              setParentTag(value as string);
+              if (value !== parentTag) {
+                setParentTag(value as number);
+              }
             }}
             style={{ width: '100%' }}
             clearable
-            options={[
-              { label: '架构云', value: '1' },
-              { label: '大数据', value: '2' },
-              { label: '区块链', value: '3' },
-              { label: '物联网', value: '4', disabled: true },
-              { label: '人工智能', value: '5' },
-            ]}
+            options={parentTagList}
           ></Select>
-          <p>文章技术栈（请先选择文章分类）</p>
+          <p>文章技术栈（请先选择文章分类，最多三项）</p>
           <Select
             value={subTag}
-            onChange={v => setSubTag(v as string[])}
+            onChange={v => {
+              if ((v as string[]).length > 3) {
+                message.warning('技术栈最多选择三项哦！');
+              } else {
+                setSubTag(v as string[]);
+              }
+            }}
             filterable
             multiple
-            options={options1}
+            options={childrenTagList}
           />
         </div>
       </Dialog>

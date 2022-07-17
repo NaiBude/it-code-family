@@ -14,7 +14,7 @@ export default function Card(props: { data: ArticleListResposeType }) {
       <div>{data.article_title}</div>
       <div>
         <span className={styles.time}>
-          {moment(data.create_time).format('YYYY:MM:DD HH:mm:ss')}
+          {moment(data.create_time).format('YYYY-MM-DD HH:mm:ss')}
         </span>
         <span>{data.show_count}展示</span>
         <span>{data.read}阅读</span>

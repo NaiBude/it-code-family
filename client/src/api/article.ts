@@ -7,6 +7,7 @@ import {
   ArticleListParamsInter,
   AddDraftInfoDataParams,
 } from '@/consts/requestTypes';
+import { DraftInfoDataResponseType } from '@/consts/infoType';
 
 /**
  * 用于文章列表数据查询
@@ -63,9 +64,42 @@ export async function selectArticle(params: { id: number }) {
   });
   return { ...result };
 }
+/**
+ * 保存草稿箱
+ */
 export async function AddDraftInfoData(params: AddDraftInfoDataParams) {
   const result = await request<null>({
     url: '/api/article/AddDraftInfoData',
+    method: 'post',
+    data: params,
+  });
+  return { ...result };
+}
+export async function DescribeDraftInfoData(params: { id?: number; username: string }) {
+  const result = await request<DraftInfoDataResponseType[]>({
+    url: '/api/article/DescribeDraftInfoData',
+    method: 'post',
+    data: params,
+  });
+  return { ...result };
+}
+/**
+ * 发布文章至待审核
+ */
+export async function AddAuditInfoData(params: AddDraftInfoDataParams) {
+  const result = await request<null>({
+    url: '/api/article/AddAuditInfoData',
+    method: 'post',
+    data: params,
+  });
+  return { ...result };
+}
+/**
+ * 获取待审核文章列表
+ */
+export async function DescribeAuditInfoData(params: { id?: number; username: string }) {
+  const result = await request<DraftInfoDataResponseType[]>({
+    url: '/api/article/DescribeAuditInfoData',
     method: 'post',
     data: params,
   });

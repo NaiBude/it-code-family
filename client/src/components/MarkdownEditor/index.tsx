@@ -2,9 +2,9 @@ import React, { ReactNode } from 'react';
 import MdEditor, { Plugins } from 'react-markdown-editor-lite';
 import * as Markdown from 'markdown-it';
 
-import 'react-markdown-editor-lite/lib/index.css';
 import { HtmlType } from 'react-markdown-editor-lite/cjs/editor/preview';
 // import Editor from 'react-markdown-editor-lite';
+import 'react-markdown-editor-lite/lib/index.css';
 
 MdEditor.use(Plugins.TabInsert, {
   /**

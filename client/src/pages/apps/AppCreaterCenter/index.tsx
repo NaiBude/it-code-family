@@ -5,6 +5,7 @@ import styles from './index.less';
 import ArticleEditor from './component/ArticleEditor';
 import MyArticles from './component/MyArticles';
 import ArticleAudit from './component/ArticleAudit';
+import ArticleDraft from './component/ArticleDraft';
 import itmjLogo from '../../../../assets/itmj_Logo.svg';
 import Avtar from '@/components/Avtar';
 import CardList from '@/components/CradList/CardList';
@@ -14,9 +15,9 @@ import { DescribeArticleList } from '@/api/article';
 const tabList = [
   { id: 1, content: '我的文章', component: MyArticles },
   { id: 2, content: '文章创作', component: ArticleEditor },
-  { id: 4, content: '草稿箱', component: ArticleAudit },
-  { id: 5, content: '审核进度', component: ArticleAudit },
-  { id: 6, content: '阅读文章', component: ArticleAudit },
+  { id: 4, content: '草稿箱', component: ArticleDraft },
+  { id: 5, content: '待审核', component: ArticleAudit },
+  // { id: 6, content: '阅读文章', component: ArticleAudit },
 ];
 
 const infoList = [
