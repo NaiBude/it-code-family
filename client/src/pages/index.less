@@ -1,31 +1,32 @@
-@variable: #333333;
-
-.title {
-  height: 40px;
-  margin-bottom: 40px;
-  padding-left: 40px;
-  color: #ccc;
-  line-height: 40px;
-  background: #333;
-  border: 2px solid #666;
+.center_content {
+  min-height: 100vh;
+  background-color: #fff;
 }
 
-.home {
+#root {
   height: 100%;
 }
 
-img {
-  height: 40px;
+li {
+  display: inline-block;
+  list-style: none;
 }
 
-.logo {
-  height: 30px;
+a {
+  color: #666;
+
+  &:hover {
+    color: #5d5fef;
+  }
 }
 
-.box {
-  width: 200px;
-  height: 200px;
-  margin-left: 45px;
-  background-color: #999;
-  border-radius: 10px;
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+:global {
+  .t-button--variant-base.t-button--theme-primary:not(.t-is-disabled):not(.t-button--ghost) {
+    --ripple-color: #4a36ff !important;
+  }
 }

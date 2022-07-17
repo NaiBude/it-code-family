@@ -18,5 +18,9 @@ module.exports = {
         ignoreProperties: ['line-width'],
       },
     ],
+    'selector-class-pattern': null,
+    'alpha-value-notation': null,
+    'color-function-notation': null,
+    'property-no-vendor-prefix': null,
   },
 };

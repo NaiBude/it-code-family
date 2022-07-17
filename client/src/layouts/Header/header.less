@@ -1,0 +1,98 @@
+.header_box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 1200px;
+  height: 50px;
+  border: 1px solid #fff;
+  box-shadow: 0 2px 4px 0 #f0f0f0;
+
+  .header_box_right {
+    display: flex;
+    align-items: center;
+    height: 50px;
+
+    .creation_station {
+      height: 36px;
+      margin-right: 10px;
+      padding: 0 20px;
+      color: white;
+      line-height: 36px;
+      background-color: #5d5fef;
+      border-radius: 18px;
+      cursor: pointer;
+
+      &:hover {
+        color: #eee;
+        background-color: #5d5fef;
+      }
+    }
+
+    .message_dymanic {
+      width: 50px;
+      height: 30px;
+      line-height: 30px;
+      cursor: pointer;
+
+      &:hover {
+        color: #5d5fef;
+      }
+    }
+  }
+
+  .tabbar_header {
+    display: flex;
+
+    .header_image {
+      position: relative;
+      display: inline-block;
+      width: 100px;
+      height: 50px;
+      margin-left: 16px;
+
+      svg {
+        position: absolute;
+        top: 8px;
+      }
+    }
+
+    .tabbar_tab_list {
+      display: inline-block;
+      padding-left: 26px;
+
+      li {
+        display: inline-block;
+        height: 50px;
+        padding: 0 10px;
+        padding-top: 14px;
+        list-style: none;
+      }
+
+      a {
+        display: inline-block;
+        padding-bottom: 8px;
+        color: #333;
+        font-size: 14px;
+
+        &:hover {
+          color: #5d5fef;
+        }
+      }
+
+      .tabber_header_select {
+        a {
+          border-bottom: 2px solid #5d5fef;
+
+          &:hover {
+            color: #5d5fef;
+          }
+        }
+      }
+    }
+  }
+
+  .login_module {
+    margin: 0 20px;
+    margin-top: 3px;
+  }
+}

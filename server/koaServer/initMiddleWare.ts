@@ -1,11 +1,10 @@
 import { readdir } from 'fs/promises';
-import koa = require('koa');
 /**
  *
  * @param {Object} context
  *  初始化中间间
  */
-const initMiddleWare = context => {
+const initMiddleWare = (context, callback) => {
   readdir('./middleWare').then(middleWareDirs => {
     middleWareDirs.forEach(item => {
       try {
@@ -17,6 +16,7 @@ const initMiddleWare = context => {
         console.log(`Tip: The export was not found in the '../middleWare/${item}'`);
       }
     });
+    callback();
   });
 };
 

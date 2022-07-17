@@ -1,0 +1,153 @@
+.form {
+  position: relative;
+  width: 100%;
+  min-width: 1200px;
+  height: 100%;
+  min-height: 720px;
+  margin: 0;
+  padding: 0;
+  background: url('../../../../assets/reg_bg_min.jpg');
+
+  .d_form {
+    position: absolute;
+    top: 12%;
+    right: 10%;
+    width: 430px;
+    height: 632px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+
+    .header_zc {
+      margin: 20px 0 22px 39px;
+
+      h3 {
+        padding-bottom: 4px;
+        color: #000;
+        font-size: 36px;
+      }
+
+      p {
+        color: #9b9b9b;
+        font-size: 14px;
+
+        a {
+          color: #5d5fef;
+        }
+      }
+    }
+  }
+}
+
+form {
+  position: relative;
+  float: left;
+  width: 100%;
+  padding-top: 48px;
+  overflow: hidden;
+
+  :global {
+    .t-input {
+      width: 90%;
+      height: 40px;
+      padding: 11px 10px;
+      border-radius: 4px;
+    }
+
+    .t-input:hover {
+      border-color: #5d5fef;
+    }
+
+    .t-form__label {
+      height: 40px;
+      padding-right: 20px;
+      line-height: 40px;
+    }
+
+    .t-input--focused {
+      border-color: #5d5fef;
+      box-shadow: 0 0 0 0;
+    }
+
+    .t-form__item-with-extra {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .t-form__label label {
+      display: inline-block;
+      font-size: 16px;
+      text-align: justify;
+      text-align-last: justify;
+    }
+
+    .t-button {
+      display: inline-block;
+      width: 90%;
+      margin-left: 20px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .t-select {
+      background: rgba(255, 255, 255, 0);
+
+      .t-select .t-fake-arrow--active {
+        color: #5d5fef;
+      }
+    }
+
+    .t-form__status {
+      position: absolute;
+      right: 4px;
+      z-index: 99;
+    }
+
+    .t-select .t-input:hover:not(.t-is-disabled) {
+      border-color: #5d5fef;
+    }
+
+    .t-button--variant-base.t-button--theme-primary:not(.t-is-disabled):not(.t-button--ghost) {
+      --ripple-color: #5d5fef;
+    }
+
+    .t-button--variant-base.t-button--theme-primary {
+      border-color: #5d5fef;
+    }
+
+    .t-button--variant-base.t-button--theme-primary:hover {
+      border-color: #5d5fef;
+    }
+  }
+}
+
+.text {
+  position: fixed;
+  top: 314px;
+  left: 195px;
+  min-width: 500px;
+  color: #fff;
+
+  .text_span {
+    font-weight: 700;
+    font-size: 54px;
+    letter-spacing: 0;
+  }
+
+  .text_p {
+    font-weight: 300;
+    font-size: 32px;
+    letter-spacing: 3.81px;
+  }
+}
+
+.icon {
+  position: fixed;
+  top: 60px;
+  left: 70px;
+
+  .icon_img {
+    width: 124.4px;
+    height: 40px;
+  }
+}

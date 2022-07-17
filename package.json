@@ -12,7 +12,8 @@
     "prepare": "husky install && sh ./scripts/git_hooks.sh",
     "lint-staged": "lint-staged",
     "lint:eslint": "eslint --fix --max-warnings 0 --ext .js,.jsx,.json,.ts,tsx ./",
-    "lint:less": "stylelint ./client/**/*.less --fix --custom-syntax postcss-less"
+    "lint:less": "stylelint ./client/**/*.less --fix --custom-syntax postcss-less",
+    "rm:lock": "sh ./scripts/remove_lock.sh"
   },
   "author": "",
   "license": "ISC",

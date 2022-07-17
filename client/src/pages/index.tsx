@@ -1,23 +1,78 @@
-import React, { useState } from 'react';
+import { connect } from 'umi';
+import React, { useEffect } from 'react';
 import styles from './index.less';
-import Logo from '../../assets/logo.png';
-import TextLogo from '../../assets/textLogo.png';
-import { request } from '../service/request';
+import Header from '@/layouts/Header';
+import 'tdesign-react/es/style/index.css';
+import { DescribeArticleList, DescribeArtcleContent } from '@/api/article';
 
-export default function IndexPage() {
-  const [name, setName] = useState([1, 2, 32, 4]);
+function IndexPage(props) {
+  const { userInfo, dispatch } = props;
+
+  const Com = props.Children;
+
+  const getdata = async () => {
+    // const result = await DescribeArtcleContent();
+    // console.log('result:::::::', result);
+    // const result = await DescribeArticleList({
+    //   Filter: [
+    //     { Name: 'tag-parent', Values: ['前端'] },
+    //     { Name: 'tag-children', Values: ['webpack'] },
+    //     { Name: 'show_count', Values: ['12'] },
+    //   ],
+    //   Sort: [
+    //     {
+    //       Name: 'show_count',
+    //       Value: 'Desc',
+    //     },
+    //     {
+    //       Name: 'create_time',
+    //       Value: 'Desc',
+    //     },
+    //   ],
+    // });
+    // console.log('result:::', result);
+    // result.Data;
+  };
+
+  useEffect(() => {
+    dispatch({ type: 'userInfo/verifyTokenUser' });
+    getdata();
+  }, []);
+
+  // useEffect(() => {
+  //   let count = 1;
+  //   console.log('feafwaf');
+
+  //   const ws = new WebSocket('ws://localhost:3000');
+  //   console.log(ws);
+
+  //   ws.onopen = function (evt) {
+  //     console.log('connect open');
+  //     console.log(evt);
+  //   };
+  //   ws.onmessage = function (evt) {
+  //     console.log(`后端发来的数据:${evt.data}`);
+  //     if (count++ === 10) {
+  //       ws.close();
+  //     }
+  //   };
+  //   ws.onclose = function (evt) {
+  //     console.log(evt);
+  //     console.log('connection close');
+  //   };
+  //   ws.onerror = function (evt) {
+  //     console.log(evt);
+  //     console.log('error!!');
+  //   };
+  // }, []);
+
   return (
-    <div className={styles.home}>
-      <div className={styles.title}>
-        <img className={styles.logo} src={Logo} />
-        <img className={styles} src={TextLogo} />
-        <iframe sandbox='' src='' frameBorder={0}></iframe>
-        {name.map(item => (
-          <div key={item}>{item}</div>
-        ))}
-      </div>
-      <div>huhuhu</div>
-      <div className={styles.box}></div>
+    <div className={styles.center_content}>
+      <Header userInfo={userInfo}></Header>
+      <div>{props.children}</div>
     </div>
   );
 }
+export default connect(({ userInfo }) => {
+  return userInfo;
+})(IndexPage);

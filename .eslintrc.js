@@ -20,7 +20,7 @@ module.exports = {
     ], // 导入顺序
     'import/newline-after-import': 'warn', // Import语句强制换行
     // 'import/prefer-default-export': 'warn', // 如果模块是单个名称，首选默认导入
-    'import/no-unassigned-import': 'warn', // 禁止未分配的模块导入，如直接导入css
+    // 'import/no-unassigned-import': 'warn', // 禁止未分配的模块导入，如直接导入css
     'import/dynamic-import-chunkname': [
       'warn',
       {
@@ -55,7 +55,7 @@ module.exports = {
     'no-unreachable': 'warn', // 禁止在 return、throw、continue 和 break 语句之后出现不可达代码
     'no-unsafe-finally': 'warn', // 禁止在 finally 语句块中出现控制流语句
     'no-unsafe-negation': 'warn', // 禁止对关系运算符的左操作数使用否定操作符
-    'require-atomic-updates': 'warn', // 禁止由于 await 或 yield的使用而可能导致出现竞态条件的赋值
+    // 'require-atomic-updates': 'warn', // 禁止由于 await 或 yield的使用而可能导致出现竞态条件的赋值
     'use-isnan': 'warn', // 要求使用 isNaN() 检查 NaN
     'valid-typeof': 'error', // 强制 typeof 表达式与有效的字符串进行比较,防止拼写错误
     'accessor-pairs': 'warn', // 强制 getter 和 setter 在对象中成对出现
@@ -64,7 +64,7 @@ module.exports = {
     'consistent-return': 'warn', // 要求 return 语句要么总是指定返回的值，要么不指定
     curly: 'warn', // 强制所有控制语句使用一致的括号风格
     'default-case': 'warn', // 要求 switch 语句中有 default 分支
-    'dot-location': 'warn', // 强制在点号之前和之后一致的换行
+    // 'dot-location': 'warn', // 强制在点号之前和之后一致的换行
     'dot-notation': 'warn', // 强制尽可能地使用点号
     eqeqeq: 'warn', // 要求使用 === 和 !==
     'guard-for-in': 'warn', // 要求 for-in 循环中有一个 if 语句
@@ -94,7 +94,7 @@ module.exports = {
     'no-new-wrappers': 'warn', // 禁止对 String，Number 和 Boolean 使用 new 操作符
     'no-octal': 'warn', // 禁用八进制字面量
     'no-octal-escape': 'warn', // 禁止在字符串中使用八进制转义序
-    'no-param-reassign': 'warn', // 禁止对 function 的参数进行重新赋值
+    // 'no-param-reassign': 'warn', // 禁止对 function 的参数进行重新赋值
     'no-proto': 'warn', // 禁用 __proto__ 属性,使用 Object.getPrototypeOf 和 Object.setPrototypeOf 代替
     'no-redeclare': 'warn', // 禁止多次声明同一变量
     'no-restricted-properties': [
@@ -110,7 +110,7 @@ module.exports = {
       },
     ], // 禁用对象的某些属性
     'no-return-assign': 'error', // 禁止在 return 语句中使用赋值语句
-    'no-return-await': 'error', // 禁用不必要的 return await
+    // 'no-return-await': 'error', // 禁用不必要的 return await
     'no-self-assign': 'warn', // 禁止自我赋值
     'no-self-compare': 'warn', // 禁止自身比较
     'no-sequences': 'warn', // 禁用逗号操作符
@@ -118,6 +118,7 @@ module.exports = {
     'no-throw-literal': 'warn', // 禁止抛出异常字面量
     'no-unmodified-loop-condition': 'warn', // 禁用一成不变的循环条件
     'no-unused-labels': 'warn', // 禁用未使用过的标签
+    // 'no-unused-vars': 'warn', // 禁止未使用的变量出现，此规则会导致ts接口定义参数类型出现报错
     'no-useless-call': 'warn', // 禁止不必要的 .call() 和 .apply()
     'no-useless-catch': 'warn', // 禁止不必要的 catch 子句
     'no-useless-concat': 'warn', // 禁止不必要的字符串字面量或模板字面量的连接
@@ -126,7 +127,7 @@ module.exports = {
     'no-void': 'warn', // 禁用 void 操作符
     'no-warning-comments': 'warn', // 禁止在注释中使用特定的警告术语 //TODO or //FIXME
     'no-with': 'warn', // 禁用 with 语句
-    'prefer-named-capture-group': 'warn', // 建议在正则表达式中使用命名捕获组
+    // 'prefer-named-capture-group': 'warn', // 建议在正则表达式中使用命名捕获组
     'prefer-promise-reject-errors': 'warn', // 要求使用 Error 对象作为 Promise 拒绝的原因
     'require-await': 'warn', // 禁止使用不带 await 表达式的 async 函数
     'vars-on-top': 'warn', // 要求所有的 var 声明出现在它们所在的作用域顶部
@@ -146,7 +147,7 @@ module.exports = {
     ], // 禁用特定的全局变量
     'no-shadow-restricted-names': 'warn', // 禁止将标识符定义为受限的名字
     'no-undef-init': 'warn', // 禁止将变量初始化为 undefined
-    'no-undefined': 'warn', // 禁止将 undefined 作为标识符
+    // 'no-undefined': 'warn', // 禁止将 undefined 作为标识符
     'no-use-before-define': 'warn', // 禁止在变量定义之前使用它们中
     'no-buffer-constructor': 'warn', // 禁用 Buffer() 构造函数
     'no-mixed-requires': 'warn', // 禁止混合常规变量声明和 require 调用
@@ -155,7 +156,7 @@ module.exports = {
     'no-process-exit': 'warn', // 禁用 process.exit()
     'no-restricted-modules': ['error', 'fs', 'cluster'], // 禁用node的某些模块
     'no-sync': 'warn', // 禁用同步方法
-    camelcase: 'warn', // 强制使用骆驼拼写法命名约定
+    // camelcase: 'warn', // 强制使用骆驼拼写法命名约定
     'comma-dangle': ['error', 'always-multiline'], // 要求或禁止末尾逗号
     'comma-spacing': [
       'warn',
@@ -168,15 +169,15 @@ module.exports = {
     'eol-last': ['error', 'always'], // 要求或禁止文件末尾保留一行空行
     'func-call-spacing': ['error', 'never'], // 要求或禁止在函数标识符和其调用之间有空格
     'implicit-arrow-linebreak': ['warn', 'beside'], // 强制隐式返回的箭头函数体的位置
-    indent: ['warn', 2], // 强制使用一致的缩进
+    // indent: ['warn', 2], // 强制使用一致的缩进,使用pretttier做缩进,eslint一般需要取消改规则
     'jsx-quotes': ['warn', 'prefer-single'], // 强制在 JSX 属性中使用一致的单引号或双引号
     'linebreak-style': ['error', 'unix'], // 强制使用一致的换行符风格
     'lines-between-class-members': ['error', 'always'], // 要求或禁止在类成员之间出现空行
-    'new-cap': 'warn', // 要求构造函数首字母大写
+    // 'new-cap': 'warn', // 要求构造函数首字母大写
     'new-parens': 'warn', // 要求调用无参构造函数时带括号
     'no-array-constructor': 'warn', // 禁止使用 Array 构造函数
     'no-lonely-if': 'warn', // 禁止 if 语句作为唯一语句出现在 else 语句块中
-    'no-mixed-operators': 'warn', // 禁止混合使用不同的操作符
+    // 'no-mixed-operators': 'warn', // 禁止混合使用不同的操作符
     'no-mixed-spaces-and-tabs': 'warn', // 禁止使用 空格 和 tab 混合缩进
     'no-multi-assign': 'warn', // 禁止连续赋值
     'no-multiple-empty-lines': 'warn', // 禁止出现多行空行
@@ -191,7 +192,7 @@ module.exports = {
     'space-infix-ops': 'warn', // 要求操作符周围有空格
     'switch-colon-spacing': 'warn', // 强制在 switch 的冒号左右有空格
     'template-tag-spacing': ['error', 'always'], // 要求或禁止在模板标记和它们的字面量之间有空格
-    'wrap-regex': 'warn', // 要求正则表达式被括号括起来
+    // 'wrap-regex': 'warn', // 要求正则表达式被括号括起来
     'no-const-assign': 'warn', // 禁止修改 const 声明的变量
     'no-dupe-class-members': 'warn', // 禁止类成员中出现重复的名称
     'no-duplicate-imports': 'warn', // 禁止重复模块导入
@@ -221,6 +222,7 @@ module.exports = {
     'react/jsx-boolean-value': ['warn', 'never', { always: ['personal'] }], // 在给组件传boolean属性时，boolean可以直接省略
     'react/jsx-closing-bracket-location': ['warn', 'line-aligned'], // 验证 JSX 中的右括号位置
     'react/jsx-key': 'error', // 报告迭代器/集合文本中缺少的属性key
+    'react/no-unknown-property': 'warn',
   },
   parserOptions: {
     ecmaVersion: 2018,

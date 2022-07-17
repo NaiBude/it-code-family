@@ -19,4 +19,7 @@ const initModels = function () {
 
   return sql;
 };
-export { initModels };
+
+const knexModel = initModels();
+
+export = knexModel;
